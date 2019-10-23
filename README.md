@@ -1,7 +1,7 @@
 ## Build Setup
 
 ``` bash
-# 初始化项目
+# 初始化项目...
 vue init mpvue/mpvue-quickstart myproject
 cd myproject
 
