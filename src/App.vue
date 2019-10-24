@@ -1,3 +1,7 @@
+<style lang="less">
+@import "~styles/public.less";
+@import "~styles/style.less";
+</style>
 <script>
 export default {
   created () {
@@ -29,8 +33,8 @@ export default {
   }
 }
 </script>
-
 <style>
+
 .container {
   height: 100%;
   display: flex;
