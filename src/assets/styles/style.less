@@ -1,23 +1,206 @@
 // 首页
-.home-banner-one{
-  width: 100%;
-  height: 420rpx;
-  background: #f8f8f8;
-  swiper{
-    height: 420rpx;
+.home-content{
+  .home-banner-one{
+    width: 100%;
+    height: 450rpx;
+    background: #f8f8f8;
+    swiper{
+      width: 100%;
+      height: 450rpx;
+      
+    }
+  }
+  .home-banner-two{
+    width: 100%;
+    height: 320rpx;
+    swiper{
+      width: 100%;
+      height: 320rpx;
+      .home-two-text{
+        position: absolute;
+        left: 78rpx;
+        top: 80rpx;
+        z-index: 3;
+        color: #e3e3e3;
+        font-size: 40rpx;
+  
+        .detail{
+  
+        }
+        .arrow-icon{
+          margin-top: 18rpx;
+          text-align: center;
+          img{
+            width: 75rpx;
+            height: 75rpx;
+          }
+        }
+      }
+    }
+  }
+  .home-banner-three{
+    width: 100%;
+    height: 390rpx;
+    &.three-theight{
+      margin-bottom: 50rpx;
+  
+    }
+    swiper{
+      width: 100%;
+      height: 390rpx;
+      .home-three-text{
+        background: rgba(0, 0, 0, 0.42);
+        position: absolute;
+        left: 0rpx;
+        top: 120rpx;
+        z-index: 3;
+        color: #e3e3e3;
+        font-size: 36rpx;
+        border-radius: 0rpx 8rpx 8rpx 0rpx;
+        padding: 20rpx 32rpx;
+  
+        img{
+          float: left;
+          width: 14rpx;
+          height: 48rpx;
+  
+        }
+        .sp-word{
+          float: left;
+          margin-left: 20rpx;
+  
+        }
+      }
+    }
+  }
+  .home-block-address{
+    background: #fff;
+    padding: 18rpx 40rpx;
+    margin-bottom: 28rpx;
+  
+    .home-addree-img{
+      img{
+        width: 100%;
+        height: 370rpx;
+  
+      }
+  
+    }
+    .home-addree-text{
+      margin-top: 15rpx;
+      color: #000;
+  
+      .title{
+        border-bottom: 2rpx solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 3rpx;
+        font-size: 42rpx;
+        margin-bottom: 29rpx;
+  
+        span{
+          font-size: 28rpx;
+          font-weight: 300;
+          margin-left: 20rpx;
+  
+        }
+      }
+      .p-word{
+        font-size: 25rpx;
+        margin-top: 10rpx;
+  
+        img{
+          width: 30rpx;
+          height: 30rpx;
+          vertical-align: top;
+          margin-right: 18rpx;
+          margin-top: 4rpx;
+  
+        }
+  
+      }
+    }
   }
 }
-.home-banner-two{
-  width: 100%;
-  height: 280rpx;
-  swiper{
-    height: 280rpx;
+//服务
+.service-content{
+  .service-cont-banner{
+    width: 92%;
+    height: 380rpx;
+    margin: 28rpx auto;
+    border-radius: 10rpx;
+
+    swiper{
+      height: 380rpx;
+    }
+  }
+  .service-cont-item{
+    width: 100%;
+    height: 380rpx;
+    position: relative;
+    .p-text{
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      // transform: scale(-50%);
+      transform: translate(-50%);
+      top:166rpx;
+      font-size: 40rpx;
+      color: #fff;
+      text-align: center;
+    }
+    .p-img{
+        width: 100%;
+        height: 380rpx;
+    }
+
   }
 }
-.home-banner-three{
-  width: 100%;
-  height: 375rpx;
-  swiper{
-    height: 375rpx;
+
+//客照
+.works-content{
+  padding: 20rpx 40rpx;
+
+  .works-cont-item{
+    margin-bottom: 26rpx;
+    color: #000;
+    .title{
+      font-size: 36rpx;
+margin-bottom: 10rpx;
+
+    }
+    .p-text{
+      font-size: 28rpx;
+      line-height: 38rpx;
+
+    }
+    .works-ul{
+      margin-top: 10rpx;
+      overflow: hidden;
+      width: 100%;
+      height: 628rpx;
+      background: #ddd;
+      display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+
+
+
+      .works-cont-list{
+        margin-right: 16rpx;
+background: #fff;
+margin-bottom: 16rpx;
+box-sizing: border-box;
+flex: 0 0 31.02%;
+height: 200rpx;
+box-sizing: border-box;
+
+        &:nth-child(3n){
+          margin-right: 0rpx;
+        }
+        img{
+          width: 100%;
+          height: 200rpx;
+        }
+      }
+    }
   }
 }

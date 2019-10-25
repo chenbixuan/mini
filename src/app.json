@@ -8,14 +8,14 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "沉壁轩",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#999",
     "backgroundColor": "#fafafa",
     "selectedColor": "#333",
-    "borderStyle": "white",
+    "borderTopStyle": "2rpx solid #bababa",
 
     "list": [{
       "text": "首页",

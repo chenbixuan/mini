@@ -1,18 +1,20 @@
 <template>
-  <div>
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-      <block v-for="(item, index) in imgUrls" :key="index" >
-        <swiper-item>
-          <image :src="item" mode="scaleToFill"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-
-    <ul class="container log-list">
-      <li v-for="(log, index) in logs" :class="{ red: aa }" :key="index" class="log-item">
-        <!-- <card :text="(index + 1) + ' . ' + log"></card> -->
-      </li>
-    </ul>
+  <div class="works-content">
+      <div class="works-cont-item">
+        <h2 class="title">今天</h2>
+        <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
+        <ul class="works-ul">
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+        </ul>
+      </div>
   </div>
 </template>
 
