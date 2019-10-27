@@ -15,6 +15,21 @@
           <li class="works-cont-list"><img src=""/></li>
         </ul>
       </div>
+      <div class="works-cont-item">
+        <h2 class="title">今天</h2>
+        <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
+        <ul class="works-ul">
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+          <li class="works-cont-list"><img src=""/></li>
+        </ul>
+      </div>
   </div>
 </template>
 
