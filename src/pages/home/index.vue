@@ -76,7 +76,6 @@
 <script>
 import { formatTime } from '@/utils/index'
 // import card from '@/components/card'
-
 export default {
   components: {
     // card
@@ -96,7 +95,8 @@ export default {
       duration: 500
     }
   },
-
+  // methods: {
+  // },
   created () {
     let logs
     if (mpvuePlatform === 'my') {
