@@ -6,8 +6,8 @@
         <p>预约成功</p>
       </div>
       <div class="topBox-text">
-        <p>请按预约时间到店，我们将竭诚为你服务。</p>
-        <p>如若行程有变，请及时取消预约</p>
+        <p><img src="/static/images/img7.png"/>请按预约时间到店，我们将竭诚为你服务。</p>
+        <p><img src="/static/images/img7.png"/>如若行程有变，请及时取消预约</p>
       </div>
     </div>
     <div>
