@@ -2,7 +2,7 @@
   <div class="subscribesucc-content">
     <div class="subscribesucc-cont-topBox">
       <div class="topBox-icon">
-        <img src="" />
+        <img src="/static/images/img7.png" />
         <p>预约成功</p>
       </div>
       <div class="topBox-text">
