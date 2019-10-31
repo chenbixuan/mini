@@ -10,17 +10,21 @@
       </swiper>
     </div>
     <div class="home-banner-two">
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-        <block v-for="(item, index) in imgUrls" :key="index" >
-          <swiper-item>
-            <div class="home-two-text">
-              <p class="detail">查看详情</p>
-              <p class="arrow-icon"><img src="/static/images/home-detail.png"/></p>
-            </div>
-            <image :src="item" mode="scaleToFill"></image>
-          </swiper-item>
-        </block>
-      </swiper>
+      <h2 class="home-banner-title">至尊服务<span>SERVICE</span></h2>
+      <!-- <div class="home-banner-twoCon"> -->
+        <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
+          <block v-for="(item, index) in imgUrls" :key="index" >
+            <swiper-item>
+              <div class="home-two-text">
+                <p class="detail">查看详情</p>
+                <p class="arrow-icon"><img src="/static/images/home-detail.png"/></p>
+              </div>
+              <image :src="item" mode="scaleToFill"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      <!-- </div> -->
+      
     </div>
     <div class="home-banner-three">
       <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
@@ -70,6 +74,7 @@
         <p class="p-word"><img src="/static/images/icon3.png"/>13164100072</p>
       </div>
     </div>
+    
   </div>
 </template>
 

@@ -31,7 +31,9 @@
     <photo-graphy v-if="false"></photo-graphy>
     <selection-time v-if="false"></selection-time>
     <subscribe-alert-box v-if="false"></subscribe-alert-box>
-    <subscribe-alert-box></subscribe-alert-box>
+    <subscribe-succ v-if="false"></subscribe-succ>
+    <my-order></my-order>
+    <my-address v-if="false"></my-address>
   </div>
 </template>
 
@@ -42,6 +44,8 @@ import photoGraphy from '@/components/service/photography'
 import selectionTime from '@/components/service/selectiontime'
 import subscribeAlertBox from '@/components/service/subscribealertbox'
 import subscribeSucc from '@/components/service/subscribesucc'
+import myOrder from '@/components/service/order'
+import myAddress from '@/components/service/address'
 export default {
   data () {
     return {
@@ -61,7 +65,9 @@ export default {
     photoGraphy,
     selectionTime,
     subscribeAlertBox,
-    subscribeSucc
+    subscribeSucc,
+    myOrder,
+    myAddress
   },
   computed: {
     count () {

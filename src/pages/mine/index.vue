@@ -1,61 +1,77 @@
 <template>
-  <div>
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-      <block v-for="(item, index) in imgUrls" :key="index" >
-        <swiper-item>
-          <image :src="item" mode="scaleToFill"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-
-    <ul class="container log-list">
-      <li v-for="(log, index) in logs" :class="{ red: aa }" :key="index" class="log-item">
-        <!-- <card :text="(index + 1) + ' . ' + log"></card> -->
-      </li>
-    </ul>
+  <div class="mine-content">
+    <div class="mine-cont-memberBox">
+      <!-- 未登录 -->
+      <div class="memberBox-notlogin" v-if="false">
+        <p class="memberBox-p1">沉壁轩｜灰姑娘<span>会员中心</span></p>
+        <p class="memberBox-p2">加入会员 点亮特权</p>
+      </div>
+      <!-- 已登录 -->
+      <div class="memberBox-logined">
+        <p class="memberBox-p3">小轩<img src="/static/images/img26.png" /></p>
+        <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
+        <p class="memberBox-p5">100<span>积分</span></p>
+        <img class="memberBox-code" src="" />
+      </div>
+      <div class="memberBox-item">
+        <ul class="memberBox-ulBox">
+          <li class="memberBox-ulBox-li">生日礼遇</li>
+          <li class="memberBox-ulBox-li">积分兑换</li>
+          <li class="memberBox-ulBox-li">会员活动</li>
+          <li class="memberBox-ulBox-li">专项服务</li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="mine-cont-card">
+      <ul class="mine-cont-cardUl">
+        <li class="mine-cont-cardLi"><img src="/static/images/img22.png"/>我的预约</li>
+        <li class="mine-cont-cardLi"><img src="/static/images/img23.png"/>优惠卡券</li>
+        <li class="mine-cont-cardLi"><img src="/static/images/img24.png"/>邀请好友</li>
+        <li class="mine-cont-cardLi"><img src="/static/images/img25.png"/>我的预约</li>
+      </ul>
+    </div>
+    <div class="mine-cont-item">
+      <h2 class="item-title">至尊服务<span>SERVICE</span></h2>
+      <ul class="item-ulBox">
+        <li class="item-list">
+          <div class="item-list-text">
+            <h5>汉服体验</h5>
+            <p>精致汉服绝美场景</p>
+          </div>
+          
+        </li>
+        <li class="item-list">
+          <div class="item-list-text">
+            <h5>汉服体验</h5>
+            <p>精致汉服绝美场景</p>
+          </div>
+        </li>
+        <li class="item-list">
+          <div class="item-list-text">
+            <h5>汉服体验</h5>
+            <p>精致汉服绝美场景</p>
+          </div>
+        </li>
+        <li class="item-list">
+          <div class="item-list-text">
+            <h5>汉服体验</h5>
+            <p>精致汉服绝美场景</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
-// import card from '@/components/card'
-
 export default {
-  components: {
-    // card
-  },
-
-  data () {
-    return {
-      logs: [],
-      imgUrls: [
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
-      ]
-    }
-  },
-
-  created () {
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-    }
-    this.logs = logs.map(log => formatTime(new Date(log)))
-  }
+  props: ['text']
 }
 </script>
 
 <style>
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
-}
-
-.log-item {
-  margin: 10rpx;
+.card {
+  padding: 10px;
 }
 </style>
