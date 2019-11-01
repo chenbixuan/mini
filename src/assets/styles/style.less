@@ -140,41 +140,46 @@
 //服务
 .service-content {
   .service-cont-banner {
-    width: 92%;
-    height: 380rpx;
-    margin: 28rpx auto;
-    border-radius: 10rpx;
+    width: 100%;
+    height: 680rpx;
+    margin-bottom: 40rpx;
 
     swiper {
-      height: 380rpx;
+      height: 680rpx;
 
       image {
         width: 100%;
-        height: 380rpx;
+        height: 680rpx;
       }
     }
   }
 
   .service-cont-item {
-    width: 100%;
-    height: 380rpx;
+    height: 335rpx;
     position: relative;
-
-    .p-text {
-      width: 100%;
+    border-radius: 8rpx;
+    padding: 0rpx 40rpx;
+    margin-bottom: 36rpx;
+    .service-item-text{
       position: absolute;
-      left: 50%;
-      // transform: scale(-50%);
-      transform: translate(-50%);
-      top: 166rpx;
-      font-size: 40rpx;
+      left: 72rpx;
+      bottom: 25rpx;
+      z-index: 3;
       color: #fff;
-      text-align: center;
-    }
 
+      .p-text {
+        font-size: 30rpx;
+      }
+      .p-detail{
+        font-size: 20rpx;
+        margin-top: 6rpx;
+        
+      }
+    }
     .p-img {
       width: 100%;
-      height: 380rpx;
+      height: 335rpx;
+      border-radius: 8rpx;
     }
 
   }
@@ -186,17 +191,18 @@
 
   .works-cont-item {
     margin-bottom: 26rpx;
-    color: #000;
+    color: #272727;
 
     .title {
-      font-size: 36rpx;
-      margin-bottom: 16rpx;
-
+      font-size: 32rpx;
+      margin-bottom: 9rpx;
     }
 
     .p-text {
-      font-size: 28rpx;
-      line-height: 38rpx;
+      font-size: 25rpx;
+      line-height: 39rpx;
+      font-weight: 300;
+
 
     }
 
@@ -233,23 +239,33 @@
 
 //服务说明
 .photography-content {
-  padding: 25rpx 40rpx;
-  color: #000;
-
+  color: #272727;
+.photography-cont-main{
+  overflow: hidden;
+  background: #fff;
   .photography-cont-title {
-    font-size: 36rpx;
-    margin-bottom: 30rpx;
-  }
-
-  .photography-cont-text {
     font-size: 32rpx;
-    line-height: 48rpx;
-    margin-bottom: 15rpx;
-    font-weight: 300;
-
+    margin-bottom: 30rpx;
+    height: 73rpx;
+    line-height: 73rpx;
+    padding-left: 35rpx;
+    border-bottom: 2rpx solid #DDDDDD;
   }
+  .photography-cont-wordBox{
+    padding: 10rpx 40rpx;
+    .photography-cont-text {
+      font-size: 22rpx;
+      line-height: 33rpx;
+      margin-bottom: 16rpx;
+      font-weight: 300;
+
+
+    }
+  }
+}
+  
+  
   .photography-cont-btn{
-    width: 360rpx;
     margin-top: 50rpx;
 
   }
@@ -257,59 +273,66 @@
 
 //选择时间
 .selectiontime-content{
-  padding: 25rpx 40rpx;
-
-  .title{
-    font-size: 32rpx;
-    color: #000;
-    line-height: 36rpx;
-
-    img{
-      width: 9rpx;
-      height: 36rpx;
-      vertical-align: top;
-      margin-right: 13rpx;
-
-    }
-  }
-  .selectiontime-cont-date{
-    padding-bottom: 10rpx;
-    height: 500rpx;
-    border-bottom:2rpx solid #e6e6e6;
-  }
-  .selectiontime-cont-time{
-    margin-top: 40rpx;
-    .timeBox{
-      overflow: hidden;
-      width: 508rpx;
-      margin: 0 auto;
-      margin-top: 40rpx;
-
-      .timeBox-list{
-        width: 240rpx;
-        height: 82rpx;
-        background: #f3f9ff;
-        border-radius: 8rpx;
-        color: 000;
-        font-size: 31rpx;
-        text-align: center;
-        line-height: 82rpx;
+  .selectiontime-cont-main{
+    overflow: hidden;
+    background: #fff;
+    .selectiontime-cont-date{
+      padding-bottom: 10rpx;
+      height: 500rpx;
+      .title{
+        font-size: 32rpx;
         margin-bottom: 30rpx;
-        float: left;
-        margin-right: 28rpx;
-        &.on,&:hover{
-          background: #2f74af;
-          color: #fff;
+        height: 73rpx;
+        line-height: 73rpx;
+        padding-left: 35rpx;
+        border-bottom: 2rpx solid #DDDDDD;
+        color: #272727;
+    
+        img{
+          width: 9rpx;
+          height: 36rpx;
+          vertical-align: top;
+          margin-right: 13rpx;
+    
         }
-        &:nth-child(2n){
-          margin-right: 0rpx;
+      }
+    }
+    .selectiontime-cont-time{
+      margin-top: 40rpx;
+      .timeBox{
+        overflow: hidden;
+        width: 631rpx;
+        margin: 0 auto;
+        margin-top: 40rpx;
+  
+        .timeBox-list{
+          width: 300rpx;
+          height: 60rpx;
+          border: 2rpx solid #9E302E;
+          border-radius: 8rpx;
+          color: 000;
+          font-size: 25rpx;
+          text-align: center;
+          line-height: 60rpx;
+          margin-bottom: 30rpx;
+          float: left;
+          margin-right: 28rpx;
+          color: #9E302E;
+          &.on,&:hover{
+            background: #9E302E;
+            color: #fff;
+          }
+          &:nth-child(2n){
+            margin-right: 0rpx;
+          }
         }
       }
     }
   }
+  
+  
   .selectiontime-cont-btn{
-    width: 600rpx;
-    margin-top: 100rpx;
+    margin-top: 40rpx;
   }
 }
 
@@ -338,14 +361,15 @@
     left: 0rpx;
     bottom: 0rpx;
     background: #fff;
-    color: #000;
+    color: #272727;
+    padding-bottom: 40rpx;
 
     .alertbox-cont-title{
-      font-size: 36rpx;
+      font-size: 32rpx;
       text-align: center;
-      height: 120rpx;
-      line-height: 120rpx;
-      border-bottom: 2rpx solid #c9c9c9;
+      height: 73rpx;
+      line-height: 73rpx;
+      border-bottom: 2rpx solid #ddd;
       position: relative;
 
       span{
@@ -362,15 +386,28 @@
       }
     }
     .alertbox-cont-text{
-      padding: 50rpx 40rpx;
+      padding: 50rpx 72rpx;
       p{
-        margin-bottom: 15rpx;
-        font-size: 31rpx;
+        margin-bottom: 20rpx;
+        font-size: 28rpx;
+        clear: both;
+        overflow: hidden;
+
         img{
           width: 34rpx;
           height: 34rpx;
-          vertical-align: middle;
           margin-right: 30rpx;
+          float: left;
+        }
+        .sp1{
+          float: left;
+          .sp2{
+            color: #666666;
+            font-size: 24rpx;
+            margin-top: 5rpx;
+            line-height: 33rpx;
+            display: block;
+          }
         }
       }
     }
@@ -380,79 +417,83 @@
 //预约成功
 .subscribesucc-content{
   overflow: hidden;
-  .subscribesucc-cont-topBox{
+  .subscribesucc-cont-main{
     background: #ffffff;
-    color: #000;
-    border-bottom: 2rpx solid #d9d9d9;
-    text-align: center;
-    padding: 40rpx 0rpx;
     padding-bottom: 100rpx;
-
-    .topBox-icon{
-      img{
-        width: 83rpx;
-        height: 78rpx;
-        margin-bottom: 24rpx;
-
-      }
-      p{
-        font-size: 36rpx;
-
-      }
-    }
-    .topBox-text{
-      font-size: 28rpx;
-      margin-top: 50rpx;
-      text-align: left;
-      padding-left: 120rpx;
-
-      p{
-        margin-bottom: 12rpx;
-
+    .subscribesucc-cont-topBox{
+    
+      color: #272727;
+      text-align: center;
+      padding: 40rpx 0rpx;
+  
+      .topBox-icon{
         img{
-          width: 12rpx;
-          height: 12rpx;
-          vertical-align: middle;
-          margin-right: 14rpx;
-
+          width: 83rpx;
+          height: 78rpx;
+          margin-bottom: 24rpx;
+  
+        }
+        p{
+          font-size: 32rpx;
+          color: #272727;
+  
         }
       }
-    }
-  }
-  .subscribesucc-cont-buttomBox{
-    padding: 80rpx;
-    text-align: center;
-    overflow: hidden;
-
-    .buttomBox-share{
-      width: 580rpx;
-      margin-bottom: 70rpx;
-
-    }
-    .buttomBox-btn{
-      width: 580rpx;
-      margin: 0 auto;
-      span{
-        width: 290rpx;
-        height: 80rpx;
-        border-radius: 8rpx;
+      .topBox-text{
+        font-size: 22rpx;
+        margin-top: 50rpx;
         text-align: center;
-        line-height: 80rpx;
-        display: block;
-        background: #fff;
-        border-radius: 8rpx;
-        border: 2rpx solid #9E302E;
-        float: left;
-        margin-right: 60rpx;
-        color: #9E312E;
-        font-size: 30rpx;
-        &:last-child{
-          margin-right: 0rpx;
+  
+        p{
+          margin-bottom: 5rpx;
+  
+  
+          // img{
+          //   width: 12rpx;
+          //   height: 12rpx;
+          //   vertical-align: middle;
+          //   margin-right: 14rpx;
+  
+          // }
         }
-
+      }
+    }
+    .subscribesucc-cont-buttomBox{
+      padding: 80rpx;
+      text-align: center;
+      overflow: hidden;
+  
+      .buttomBox-share{
+        width: 580rpx;
+        margin-bottom: 70rpx;
+  
+      }
+      .buttomBox-btn{
+        width: 580rpx;
+        margin: 0 auto;
+        span{
+          width: 271rpx;
+          height: 80rpx;
+          border-radius: 8rpx;
+          text-align: center;
+          line-height: 80rpx;
+          display: block;
+          background: #fff;
+          border-radius: 8rpx;
+          border: 2rpx solid #9E302E;
+          float: left;
+          margin-right: 35rpx;
+          color: #9E312E;
+          font-size: 30rpx;
+          &:last-child{
+            margin-right: 0rpx;
+          }
+  
+        }
       }
     }
   }
+  
 }
 
 //我的
@@ -628,10 +669,9 @@
 // 我的预约
 .order-content{
   overflow: hidden;
-  width: 670rpx;
-  margin: 0 auto;
-  padding-top: 28rpx;
+  padding-top: 10rpx;
   .order-cont-item{
+    padding: 0rpx 40rpx;
     .order-cont-itemUl{
       .order-cont-list{
         height: 180rpx;
@@ -801,5 +841,30 @@
 
       }
     }
+  }
+}
+
+//tab样式
+.order-cont-tab{
+  height: 80rpx;
+  line-height: 71rpx;
+  padding: 0rpx 40rpx;
+  background: #fff;
+  margin-bottom: 40rpx;
+
+  .tab-sp{
+    color: #999999;
+    font-size: 24rpx;
+    margin-right: 40rpx;
+    &:last-child{
+      margin-right: 0rpx;
+    }
+    &.on{
+      height: 74rpx;
+      display: inline-block;
+      color: #9E312E;
+      border-bottom: 4rpx solid #9E312E;
+    }
+
   }
 }
