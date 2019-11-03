@@ -17,7 +17,7 @@
         </div>
         <img class="p-img" src="/static/images/img7.png"/>
       </div>
-      <div class="service-cont-item" @click="photoclick()">
+      <div class="service-cont-item" @click="maticPhotoclick()">
         <div class="service-item-text">
           <p class="p-text">主题摄影(预约)</p>
           <p class="p-detail">精致汉服绝美场景</p>
@@ -40,11 +40,17 @@
       </div>
     </div>
     
-    <photo-graphy v-if="false"></photo-graphy>
-    <selection-time v-if="false"></selection-time>
-    <subscribe-alert-box v-if="false"></subscribe-alert-box>
+    <!-- 服务说明 -->
+    <!-- <photo-graphy v-if="graphyFlag"></photo-graphy> -->
+    <!-- 预约时间 -->
+    <!-- <selection-time v-if="false"></selection-time> -->
+    <!-- 弹框 -->
+    <!-- <subscribe-alert-box v-if="false"></subscribe-alert-box> -->
+    <!-- 预约成功 -->
     <subscribe-succ v-if="false"></subscribe-succ>
-    <my-order></my-order>
+    <!-- 我的预约 -->
+    <my-order v-if="false"></my-order>
+    <!-- 门店地址 -->
     <my-address v-if="false"></my-address>
   </div>
 </template>
@@ -70,7 +76,7 @@ export default {
       autoplay: true,
       interval: 3000,
       duration: 500,
-      serviceHomeFlag: false
+      serviceHomeFlag: true
     }
   },
   components: {
@@ -87,6 +93,13 @@ export default {
     }
   },
   methods: {
+    maticPhotoclick: function () {
+      // wx.navigateTo({url: '../../components/service/photography.vue'})
+
+      wx.navigateTo({
+        url: '../service/graphy/main'
+      })
+    },
     increment () {
       store.commit('increment')
     },

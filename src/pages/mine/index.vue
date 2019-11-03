@@ -11,7 +11,7 @@
         <p class="memberBox-p3">小轩<img src="/static/images/img26.png" /></p>
         <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
         <p class="memberBox-p5">100<span>积分</span></p>
-        <img class="memberBox-code" src="" />
+        <!-- <img class="memberBox-code" src="" /> -->
       </div>
       <div class="memberBox-item">
         <ul class="memberBox-ulBox">
@@ -25,10 +25,10 @@
     </div>
     <div class="mine-cont-card">
       <ul class="mine-cont-cardUl">
-        <li class="mine-cont-cardLi"><img src="/static/images/img22.png"/>我的预约</li>
+        <li class="mine-cont-cardLi" @click="myOrder()"><img src="/static/images/img22.png"/>我的预约</li>
         <li class="mine-cont-cardLi"><img src="/static/images/img23.png"/>优惠卡券</li>
         <li class="mine-cont-cardLi"><img src="/static/images/img24.png"/>邀请好友</li>
-        <li class="mine-cont-cardLi"><img src="/static/images/img25.png"/>我的预约</li>
+        <li class="mine-cont-cardLi"><img src="/static/images/img25.png"/>联系客服</li>
       </ul>
     </div>
     <div class="mine-cont-item">
@@ -66,7 +66,15 @@
 
 <script>
 export default {
-  props: ['text']
+  props: ['text'],
+  methods: {
+    myOrder: function () {
+      console.log('22')
+      wx.navigateTo({
+        url: '../mine/order/main'
+      })
+    }
+  }
 }
 </script>
 
