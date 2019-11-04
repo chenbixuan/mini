@@ -7,7 +7,9 @@
     "pages/service/graphy/main",
     "pages/service/date/main",
     "pages/service/date/subscribesucc/main",
-    "pages/mine/order/main"
+    "pages/mine/order/main",
+    "pages/mine/coupon/main",
+    "pages/mine/integral/main"
     
   ],
   "window": {

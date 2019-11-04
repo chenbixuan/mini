@@ -321,6 +321,7 @@
           float: left;
           margin-right: 28rpx;
           color: #9E302E;
+          box-sizing: border-box;
           &.on,&:hover{
             background: #9E302E;
             color: #fff;
@@ -489,6 +490,7 @@
           margin-right: 35rpx;
           color: #9E312E;
           font-size: 30rpx;
+          box-sizing: border-box;
           &:last-child{
             margin-right: 0rpx;
           }
@@ -771,6 +773,157 @@
   }
 }
 
+//卡券
+.ticket-content{
+  padding-top: 10rpx;
+  .ticket-cont-item{
+    padding: 0rpx 40rpx;
+
+    .ticket-cont-itemUl{
+      .ticket-cont-list{
+        background: #fff;
+        border-radius: 8rpx;
+        border: 2rpx solid #ddd;
+        padding: 16rpx 22rpx;
+        overflow: hidden;
+
+        .list-cardBox{
+          border: 2rpx dashed #272727;
+          box-sizing: border-box;
+          justify-content: space-between;
+          color: #272727;
+          border-radius: 8rpx;
+          padding: 1rpx;
+          overflow: hidden;
+          height: 180rpx;
+
+          .list-cardBox-fl{
+            background: #FA9996;
+            float: left;
+            border-radius: 8rpx 0rpx 0rpx 8rpx;
+            height: 180rpx;
+            width: 180rpx;
+            text-align: center;
+            &.apply-cardBox{
+              background:#dad9d9;
+              color: #fff;
+            }
+            .money{
+              font-size: 32rpx;
+              font-weight: bold;
+              margin-top: 46rpx;
+
+              span{
+                font-size: 28rpx;
+                margin-right: 10rpx;
+
+              }
+            }
+            .money-text{
+              font-size: 24rpx;
+              margin-top: 9rpx;
+
+            }
+          }
+          .list-cardBox-ct{
+            float: left;
+            padding: 30rpx 26rpx;
+
+            .title{
+              font-size: 28rpx;
+              margin-bottom: 10rpx;
+
+            }
+            .p1{
+              font-size: 22rpx;
+              font-weight: 300;
+
+            }
+          }
+          .list-cardBox-btn{
+            flex-shrink: 0;
+            border-radius: 8rpx;
+            color: #fff;
+            background: #9E312E;
+            width: 130rpx;
+            height: 45rpx;
+            line-height: 45rpx;
+            text-align: center;
+            float: right;
+            font-size: 22rpx;
+            margin-top: 70rpx;
+            margin-right: 18rpx;
+            &.apply-cardBtn{
+              background:#dad9d9;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//积分兑换
+.integral-content{
+  .integral-cont-banner{
+    background: #FA9996;
+    height: 200rpx;
+    color: #fff;
+    padding: 50rpx 30rpx;
+    h2{
+      font-size: 32rpx;
+      margin-bottom: 16rpx;
+
+    }
+    p{
+      font-size: 24rpx;
+      font-weight: 300;
+
+    }
+  }
+  .integral-cont-item{
+    padding: 40rpx 40rpx;
+
+    .integral-cont-list{
+      border-radius: 8rpx;
+      background: #fff;
+      height: 260rpx;
+      color: #272727;
+      padding: 43rpx 40rpx;
+      position: relative;
+      
+
+      .title{
+        font-size: 32rpx;
+        margin-bottom: 20rpx;
+
+      }
+      .p1{
+        font-size: 24rpx;
+        line-height: 40rpx;
+        font-weight: 300;
+
+      }
+      .p-btn{
+        position: absolute;
+        left: 0rpx;
+        bottom: 0rpx;
+        width: 100%;
+        height: 76rpx;
+        line-height: 76rpx;
+        text-align: center;
+        color: #272727;
+        background: #dadada;
+        font-weight: 300;
+        border-radius: 0rpx 0rpx 8rpx 8rpx;
+        font-size: 30rpx;
+
+      }
+    }
+  }
+}
+
 //地址
 .address-content{
   .home-block-address {
@@ -849,18 +1002,24 @@
 }
 
 //tab样式
-.order-cont-tab{
+.common-cont-tab{
   height: 80rpx;
   line-height: 71rpx;
   padding: 0rpx 40rpx;
   background: #fff;
   margin-bottom: 40rpx;
+  display:flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  justify-content: space-around;
 
   .tab-sp{
     color: #999999;
     font-size: 24rpx;
     margin-right: 40rpx;
     display: inline-block;
+    flex-grow:1;
+    text-align: center;
     &:last-child{
       margin-right: 0rpx;
     }

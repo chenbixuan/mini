@@ -16,7 +16,7 @@
       <div class="memberBox-item">
         <ul class="memberBox-ulBox">
           <li class="memberBox-ulBox-li">生日礼遇</li>
-          <li class="memberBox-ulBox-li">积分兑换</li>
+          <li class="memberBox-ulBox-li" @click="integralChange()">积分兑换</li>
           <li class="memberBox-ulBox-li">会员活动</li>
           <li class="memberBox-ulBox-li">专项服务</li>
         </ul>
@@ -26,7 +26,7 @@
     <div class="mine-cont-card">
       <ul class="mine-cont-cardUl">
         <li class="mine-cont-cardLi" @click="myOrder()"><img src="/static/images/img22.png"/>我的预约</li>
-        <li class="mine-cont-cardLi"><img src="/static/images/img23.png"/>优惠卡券</li>
+        <li class="mine-cont-cardLi" @click="myCard()"><img src="/static/images/img23.png"/>优惠卡券</li>
         <li class="mine-cont-cardLi"><img src="/static/images/img24.png"/>邀请好友</li>
         <li class="mine-cont-cardLi"><img src="/static/images/img25.png"/>联系客服</li>
       </ul>
@@ -72,6 +72,16 @@ export default {
       console.log('22')
       wx.navigateTo({
         url: '../mine/order/main'
+      })
+    },
+    myCard: function () {
+      wx.navigateTo({
+        url: '../mine/coupon/main'
+      })
+    },
+    integralChange: function () {
+      wx.navigateTo({
+        url: '../mine/integral/main'
       })
     }
   }

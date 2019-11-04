@@ -8,8 +8,8 @@
           calendar-style="calendar" 
           header-style="header" 
           board-style="board" 
-          next="false" prev="false" show-more-days='true'
-          days-color="dayStyle" weeks-type="cn" binddayClick="dayClick"/>
+          next="false" prev="false" shiow-more-days='true'
+          :days-color="dayStyle" @dayClick="dayClick" weeks-type="cn"/>
         </div>
       </div>
       <div class="selectiontime-cont-time">
@@ -70,24 +70,9 @@ export default {
     }
   },
   mounted: function () {
-    const daysCount = new Date(this.year, this.month, 0).getDate()
-    let demo1DaysStyle = []
-    for (let i = 1; i <= daysCount; i++) {
-      const date = new Date(this.year, this.month - 1, i)
-      if (date.getDay() === 0) {
-        demo1DaysStyle.push({
-          month: 'current', day: i, color: '#f488cd'
-        })
-      } else {
-        demo1DaysStyle.push({
-          month: 'current', day: i, color: '#a18ada'
-        })
-      }
-    }
-    demo1DaysStyle.push({ month: 'current', day: 12, color: 'white', background: '#b49eeb' })
-    demo1DaysStyle.push({ month: 'current', day: 17, color: 'white', background: '#f5a8f0' })
-    demo1DaysStyle.push({ month: 'current', day: 20, color: 'white', background: '#aad4f5' })
-    demo1DaysStyle.push({ month: 'current', day: 25, color: 'white', background: '#84e7d0' })
+    let today = new Date().getDate()
+    this.dayStyle = []
+    this.dayStyle.push({month: 'current', day: today, color: '#fff', background: '#9E312E', borderRadius: '50%'})
   },
   components: {
     subscribeAlertBox
@@ -95,13 +80,26 @@ export default {
   methods: {
     // 给点击的日期设置一个背景颜色
     dayClick: function (event) {
-      let clickDay = event.detail.day
-      let changeDay = `dayStyle[1].day`
-      let changeBg = `dayStyle[1].background`
-      this.setData({
-        [changeDay]: clickDay,
-        [changeBg]: '#84e7d0'
+      console.log(1)
+      let clickDay = event.mp.detail.day
+      console.log(clickDay)
+      this.dayStyle.push({month: 'current', day: clickDay, color: 'green'})
+      console.log(event)
+      let changeDay = event.mp.detail.color
+      let changeBg = event.mp.detail.background
+      console.log(clickDay)
+      console.log(changeDay)
+      console.log(changeBg)
+      this.$mp.page.setData({
+        changeDay: '#fff',
+        changeBg: '#9E312E'
       })
+      // let changeDay = `dayStyle[1].day`
+      // let changeBg = `dayStyle[1].background`
+      // this.setData({
+      //   [changeDay]: clickDay,
+      //   [changeBg]: '#84e7d0'
+      // })
     },
     handleOpen1 () {
       EventBus.$emit('GBKBalance')
