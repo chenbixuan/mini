@@ -18,7 +18,7 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
-const host = 'http://120.25.104.115:3001/api'
+const host = 'https://wxwind.cn/api'
 
 // 请求封装
 function request (url, method, data, header = {}) {
