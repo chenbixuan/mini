@@ -1,35 +1,71 @@
 <template>
   <div class="works-content">
-      <div class="works-cont-item">
-        <h2 class="title">今天</h2>
-        <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
-        <ul class="works-ul">
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img12.png"/></li>
-        </ul>
-      </div>
-      <div class="works-cont-item">
-        <h2 class="title">今天</h2>
-        <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
-        <ul class="works-ul">
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-          <li class="works-cont-list"><img src="/static/images/img27.png"/></li>
-        </ul>
-      </div>
+    <div class="works-cont-item">
+      <h2 class="title">今天</h2>
+      <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
+      <ul class="works-ul">
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+      </ul>
+    </div>
+    <div class="works-cont-item">
+      <h2 class="title">今天</h2>
+      <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
+      <ul class="works-ul">
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+        <li class="works-cont-list">
+          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -56,7 +92,7 @@ export default {
   created () {
     let logs
     if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
+      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
     } else {
       logs = mpvue.getStorageSync('logs') || []
     }
