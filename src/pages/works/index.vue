@@ -1,68 +1,11 @@
 <template>
   <div class="works-content">
-    <div class="works-cont-item">
-      <h2 class="title">今天</h2>
-      <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
+    <div class="works-cont-item" v-for="(item, index) in lists" :key="index">
+      <h2 class="title">{{ item.date }}</h2>
+      <p class="p-text">{{ item.title }}</p>
       <ul class="works-ul">
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-      </ul>
-    </div>
-    <div class="works-cont-item">
-      <h2 class="title">今天</h2>
-      <p class="p-text">池夏家的金陵往事系列，简直爱了，黛玉、妙玉，元春，宝钗，李纨，巧姐，迎春，惜春...</p>
-      <ul class="works-ul">
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
-        </li>
-        <li class="works-cont-list">
-          <img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg" />
+        <li class="works-cont-list" v-for="(file, i) in item.files" :key="i">
+          <img :src="file.url" />
         </li>
       </ul>
     </div>
@@ -70,33 +13,38 @@
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
-// import card from '@/components/card'
+import moment from 'moment'
+import { get } from '../../utils'
 
 export default {
   components: {
-    // card
   },
 
   data () {
     return {
-      logs: [],
-      imgUrls: [
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/newsPicture/05558951-de60-49fb-b674-dd906c8897a6',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/coursePicture/0fbcfdf7-0040-4692-8f84-78bb21f3395d',
-        'http://mss.sankuai.com/v1/mss_51a7233366a4427fa6132a6ce72dbe54/management-school-picture/7683b32e-4e44-4b2f-9c03-c21f34320870'
-      ]
+      lists: [],
+      page: 1
     }
   },
 
-  created () {
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({ key: 'logs' }).data || []
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
+  mounted () {
+    this.getData()
+  },
+
+  onReachBottom () {
+    this.getData()
+  },
+
+  methods: {
+    async getData () {
+      const kz = await get(`/kz?page=${this.page}`)
+
+      kz.rows.map(item => {
+        item.date = moment(item.date).format('YYYY-MM-DD HH:mm')
+        this.lists.push(item)
+      })
+      this.page++
     }
-    this.logs = logs.map(log => formatTime(new Date(log)))
   }
 }
 </script>
