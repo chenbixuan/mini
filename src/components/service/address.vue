@@ -1,7 +1,7 @@
 <template>
   <div class="address-content">
     <div class="home-block-address">
-      <p class="home-addree-img"><img src="/static/images/home-address.png"/></p>
+      <p class="home-addree-img"><img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/home-address.png"/></p>
       <div class="home-addree-text">
         <h2 class="title">
           沉壁轩<span>点击预约</span>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="home-block-address">
-      <p class="home-addree-img"><img src="/static/images/home-address.png"/></p>
+      <p class="home-addree-img"><img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/home-address.png"/></p>
       <div class="home-addree-text">
         <h2 class="title">
           灰姑娘<span>点击预约</span>

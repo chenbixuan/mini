@@ -77,9 +77,9 @@ export default {
     return {
       logs: [],
       imgUrls: [
-        '/static/images/1.jpg',
-        '/static/images/2.png',
-        '/static/images/3.jpeg'
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg',
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/2.png',
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/3.jpeg'
       ],
       indicatorDots: true,
       autoplay: true,

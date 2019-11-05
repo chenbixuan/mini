@@ -53,7 +53,7 @@
       </swiper>
     </div>
     <div class="home-block-address">
-      <p class="home-addree-img"><img src="/static/images/home-address.png"/></p>
+      <p class="home-addree-img"><img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/home-address.png"/></p>
       <div class="home-addree-text">
         <h2 class="title">
           沉壁轩<span>汉服体验馆（武汉街道口）</span>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="home-block-address">
-      <p class="home-addree-img"><img src="/static/images/home-address.png"/></p>
+      <p class="home-addree-img"><img src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/home-address.png"/></p>
       <div class="home-addree-text">
         <h2 class="title">
           灰姑娘<span>变装体验馆（武汉街道口）</span>
@@ -90,9 +90,9 @@ export default {
     return {
       logs: [],
       imgUrls: [
-        '/static/images/1.jpg',
-        '/static/images/2.png',
-        '/static/images/3.jpeg'
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg',
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/2.png',
+        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/3.jpeg'
       ],
       indicatorDots: true,
       autoplay: true,
