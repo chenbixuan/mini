@@ -63,6 +63,21 @@ module.exports = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    fileExt: fileExt
+    fileExt: fileExt,
+    proxyTable: {
+      '/api':{
+        target: 'http://doc.wxwind.com/docs/#/',         //接口域名
+        changeOrigin: true, //是否跨域
+        pathRewrite: {
+          '^/api': '',
+        }
+      }
+    },
+    host: 'localhost',                   // can be overwritten by process.env.HOST
+    port: 8080,
+    autoOpenBrowser: true,
+    errorOverlay: true,
+    notifyOnErrors: true,
+    poll: true
   }
 }

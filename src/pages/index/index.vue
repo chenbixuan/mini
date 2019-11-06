@@ -67,6 +67,7 @@
 
 <script>
 import { formatTime } from '@/utils/index'
+// import Axios from 'axios'
 // import card from '@/components/card'
 export default {
   components: {
@@ -87,8 +88,7 @@ export default {
       duration: 500
     }
   },
-  // methods: {
-  // },
+
   created () {
     let logs
     if (mpvuePlatform === 'my') {
@@ -97,6 +97,25 @@ export default {
       logs = mpvue.getStorageSync('logs') || []
     }
     this.logs = logs.map(log => formatTime(new Date(log)))
+
+    this.getHomePage()
+  },
+  methods: {
+    getHomePage: function () {
+      console.log('res')
+      this.$axios.get('banner')
+        .then(response => {
+          console.log('111111')
+          console.log(response)
+          if (response.data.sucess) {
+            console.log(response.data.data)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+          console.log(error.message)
+        })
+    }
   }
 }
 </script>
