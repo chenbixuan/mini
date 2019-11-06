@@ -9,7 +9,10 @@
     "pages/service/subscribesucc/main",
     "pages/mine/order/main",
     "pages/mine/coupon/main",
-    "pages/mine/integral/main"
+    "pages/mine/integral/main",
+    "pages/mine/personal/main",
+    "pages/mine/name/main",
+    "pages/index/news/main"
 
   ],
   "window": {

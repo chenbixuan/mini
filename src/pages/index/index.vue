@@ -14,7 +14,7 @@
       <div class="home-banner-twoCon">
         <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
           <block v-for="(item, index) in imgUrls" :key="index" >
-            <swiper-item>
+            <swiper-item @click="commonClick()">
               <div class="home-two-text">
                 <p class="detail">汉服体验</p>
                 <p class="arrow-icon">精致汉服绝美场景</p>
@@ -30,7 +30,7 @@
       <div class="home-banner-threeCon">
         <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
           <block v-for="(item, index) in imgUrls" :key="index" >
-            <swiper-item>
+            <swiper-item @click="commonClick()">
               <!-- <div class="home-three-text">
                 <img src="/static/images/home-line.png"/>
                 <span class="sp-word">日出东南隅,照我秦氏楼</span>
@@ -112,6 +112,11 @@ export default {
       console.log(kz)
       kz.rows.map(item => {
 
+      })
+    },
+    commonClick: function () {
+      wx.navigateTo({
+        url: '../index/news/main'
       })
     }
   }
