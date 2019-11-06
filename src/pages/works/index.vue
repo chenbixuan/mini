@@ -32,17 +32,18 @@ export default {
   },
 
   onReachBottom () {
-    this.getData()
+    if (this.hasNext) this.getData()
   },
 
   methods: {
     async getData () {
-      const kz = await get(`/kz?page=${this.page}`)
+      const { lists, hasNext } = await get(`/kz?page=${this.page}`)
 
-      kz.rows.map(item => {
+      lists.map(item => {
         item.date = moment(item.date).format('YYYY-MM-DD HH:mm')
         this.lists.push(item)
       })
+      this.hasNext = hasNext
       this.page++
     },
     previewImage: function (index, key) {

@@ -1,3 +1,5 @@
+import { host } from '../config'
+
 function formatNumber (n) {
   const str = n.toString()
   return str[1] ? str : `0${str}`
@@ -17,8 +19,6 @@ export function formatTime (date) {
 
   return `${t1} ${t2}`
 }
-
-const host = 'https://wxwind.cn/api'
 
 // 请求封装
 function request (url, method, data, header = {}) {
