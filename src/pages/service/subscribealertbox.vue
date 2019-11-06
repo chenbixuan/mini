@@ -1,8 +1,8 @@
 <template>
-  <div class="alertbox-content" v-if="memberAgencyFrom">
-    <div class="mask-black"></div>
-    <div class="alertbox-cont-main">
-      <h2 class="alertbox-cont-title">预约信息确认<span><img src="/static/images/img19.png" /></span></h2>
+  <div class="alertbox-content">
+    <div class="mask-black " :class="{'fadeIn':fadeInFlag,'fadeOut':fadeOutFlag}"></div>
+    <div class="alertbox-cont-main" :class="{'fadeInUp':fadeInFlag,'fadeOutDown':fadeOutFlag}">
+      <h2 class="alertbox-cont-title">预约信息确认<span><img src="/static/images/img19.png" @click="closeWind()" /></span></h2>
       <div class="alertbox-cont-text">
         <p><img src="/static/images/img14.png" /><span class="sp1">主题摄影</span></p>
         <p><img src="/static/images/img15.png" /><span class="sp1">2019/10/27 13:00-14:00 到店</span></p>
@@ -12,7 +12,6 @@
       </div>
       <div class="btn alertbox-cont-btn" @click="alertOrder()">预约</div>
     </div>
-    
   </div>
 </template>
 
@@ -21,23 +20,44 @@ import EventBus from 'scripts/EventBus'
 export default {
   data () {
     return {
-      memberAgencyFrom: false
+      memberAgencyFrom: false,
+      fadeInFlag: false,
+      fadeOutFlag: false
+      // fadeInUpFlag: false
+      // fadeOutDownFlag: false
     }
   },
   created: function () {
+    // this.fadeInFlag = false
+  },
+  mounted: function () {
+    this.fadeInFlag = false
+    this.fadeOutFlag = false
     EventBus.$on('GBKBalance', () => {
       this.ShowAgency()
     })
   },
   methods: {
     ShowAgency: function () {
-      this.memberAgencyFrom = true
+      // this.memberAgencyFrom = true
+      this.fadeInFlag = true
+      this.fadeOutFlag = false
+      // this.fadeInUpFlag = true
     }, // end ShowEditPhone
     alertOrder: function () {
       wx.navigateTo({
         url: '../subscribesucc/main'
       })
+    },
+    closeWind: function () {
+      this.$nextTick(() => {
+        this.fadeInFlag = false
+        this.fadeOutFlag = true
+      })
     }
+  },
+  beforeDestroy () {
+    EventBus.$off('GBKBalance')
   }
 }
 </script>

@@ -67,6 +67,7 @@
 
 <script>
 import { formatTime } from '@/utils/index'
+import { get } from '../../utils'
 // import card from '@/components/card'
 export default {
   components: {
@@ -97,6 +98,22 @@ export default {
       logs = mpvue.getStorageSync('logs') || []
     }
     this.logs = logs.map(log => formatTime(new Date(log)))
+  },
+  mounted () {
+    this.getHomePage()
+  },
+
+  // onReachBottom () {
+  //   this.getHomePage()
+  // },
+  methods: {
+    async getHomePage () {
+      const kz = await get(`/banner`)
+      console.log(kz)
+      kz.rows.map(item => {
+
+      })
+    }
   }
 }
 </script>

@@ -66,7 +66,9 @@ export default {
           icon: 'share',
           openType: 'share'
         }
-      ]
+
+      ],
+      dd: false
     }
   },
   mounted: function () {
@@ -103,6 +105,7 @@ export default {
     },
     handleOpen1 () {
       EventBus.$emit('GBKBalance')
+      // this.dd = true
     }
   }
 }

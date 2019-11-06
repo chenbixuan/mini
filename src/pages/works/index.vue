@@ -4,7 +4,7 @@
       <h2 class="title">{{ item.date }}</h2>
       <p class="p-text">{{ item.title }}</p>
       <ul class="works-ul">
-        <li class="works-cont-list" v-for="(file, i) in item.files" :key="i">
+        <li class="works-cont-list" v-for="(file, i) in item.files" :key="i" @click="previewImage(index,i)">
           <img :src="file.url" />
         </li>
       </ul>
@@ -44,6 +44,15 @@ export default {
         this.lists.push(item)
       })
       this.page++
+    },
+    previewImage: function (index, key) {
+      let that = this
+      var jsonText = new Array(that.lists[index].files[key].url)
+      // var current = e.target.dataset.src
+      wx.previewImage({
+        current: that.lists[index].files[key].url, // 当前显示图片的http链接
+        urls: jsonText // 需要预览的图片http链接列表
+      })
     }
   }
 }

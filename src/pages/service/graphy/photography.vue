@@ -26,12 +26,14 @@
 </template>
 
 <script>
+import EventBus from 'scripts/EventBus'
 export default {
   mounted: function () {
 
   },
   methods: {
     nextStep: function () {
+      EventBus.$off('GBKBalance')
       wx.navigateTo({
         url: '../date/main'
       })
