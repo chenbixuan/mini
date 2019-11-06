@@ -27,9 +27,7 @@ export default {
 
   },
   methods: {
-    ticketState: function (no) {
-      this.ticketType = no
-    }
+
   }
 }
 </script>

@@ -8,7 +8,7 @@
       </div>
       <!-- 已登录 -->
       <div class="memberBox-logined">
-        <p class="memberBox-p3">小轩<img src="/static/images/img26.png" /></p>
+        <p class="memberBox-p3">小轩<img @click="editClick()" src="/static/images/img26.png" /></p>
         <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
         <p class="memberBox-p5">100<span>积分</span></p>
         <!-- <img class="memberBox-code" src="" /> -->
@@ -82,6 +82,11 @@ export default {
     integralChange: function () {
       wx.navigateTo({
         url: '../mine/integral/main'
+      })
+    },
+    editClick: function () {
+      wx.navigateTo({
+        url: '../mine/personal/main'
       })
     }
   }
