@@ -2,15 +2,22 @@
   <div class="mine-content">
     <div class="mine-cont-memberBox">
       <!-- 未登录 -->
-      <div class="memberBox-notlogin" v-if="false">
+      <div class="memberBox-notlogin" v-if="!token">
         <p class="memberBox-p1">沉壁轩｜灰姑娘<span>会员中心</span></p>
-        <p class="memberBox-p2">加入会员 点亮特权</p>
+<!--        <p class="memberBox-p2">加入会员 点亮特权</p>-->
+        <button
+          class="memberBox-p2"
+          open-type="getUserInfo"
+          @getuserinfo="getUserInfo"
+        >
+          加入会员 点亮特权
+        </button>
       </div>
       <!-- 已登录 -->
-      <div class="memberBox-logined">
+      <div class="memberBox-logined" v-if="token">
         <p class="memberBox-p3">小轩<img @click="editClick()" src="/static/images/img26.png" /></p>
         <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
-        <p class="memberBox-p5">100<span>积分</span></p>
+        <p class="memberBox-p5" @click="getUserInfo()">100<span>积分</span></p>
         <!-- <img class="memberBox-code" src="" /> -->
       </div>
       <div class="memberBox-item">
@@ -21,7 +28,7 @@
           <li class="memberBox-ulBox-li">专项服务</li>
         </ul>
       </div>
-      
+
     </div>
     <div class="mine-cont-card">
       <ul class="mine-cont-cardUl">
@@ -39,7 +46,7 @@
             <h5>汉服体验</h5>
             <p>精致汉服绝美场景</p>
           </div>
-          
+
         </li>
         <li class="item-list">
           <div class="item-list-text">
@@ -65,8 +72,20 @@
 </template>
 
 <script>
+import { get, post } from '../../utils'
+
 export default {
   props: ['text'],
+  data: {
+    token: null,
+    openId: null
+    // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoi5bOwIiwiaWF0IjoxNTczMDY0NDE5LCJleHAiOjE1NzMwNjgwMTl9.GWimetrk7KyW-Aq8T7VcOohsp5v7LtfnNGfLxaz4MCE'
+  },
+  mounted () {
+    this.token = wx.getStorageSync('token')
+    console.log('this.token', this.token)
+    if (!this.token) this.getOpenId()
+  },
   methods: {
     myOrder: function () {
       console.log('22')
@@ -88,6 +107,38 @@ export default {
       wx.navigateTo({
         url: '../mine/personal/main'
       })
+    },
+    getOpenId: function () {
+      const that = this
+      wx.login({
+        async success (res) {
+          console.log('res', res)
+          if (res.code) {
+            // 发起网络请求
+            const { openId } = await get(`/wxUser/getOpenId?code=${res.code}`)
+            console.log('openId', openId)
+            that.openId = openId
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
+    },
+    getUserInfo: async function (e) {
+      const userInfo = e.target.userInfo
+      userInfo.openId = this.openId
+      userInfo.nickname = userInfo.nickName
+      console.log('userInfo', userInfo)
+
+      const { token } = await post('/wxUser', userInfo)
+      if (token) {
+        try {
+          wx.setStorageSync('token', token)
+          this.token = token
+        } catch (e) {
+          console.log('e-->', e)
+        }
+      }
     }
   }
 }

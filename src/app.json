@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/mine/main",
     "pages/index/main",
     "pages/service/main",
     "pages/works/main",
-    "pages/mine/main",
     "pages/service/graphy/main",
     "pages/service/date/main",
     "pages/service/subscribesucc/main",
