@@ -19,9 +19,9 @@
         </p>
       </div>
     </div>
-    
+
     <!-- <i-button @click="handleClick">默认按钮</i-button> -->
-          
+
   </div>
 </template>
 
@@ -32,8 +32,8 @@ export default {
   },
   methods: {
     backHome: function () {
-      wx.navigateTo({
-        url: '../../index/main'
+      wx.switchTab({
+        url: '/pages/index/main'
       })
     }
   }

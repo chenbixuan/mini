@@ -7,10 +7,10 @@
             <swiper-item>
               <image :src="item" mode="scaleToFill"></image>
             </swiper-item>
-          </block> 
+          </block>
         </swiper>
       </div>
-      <div class="service-cont-item">
+      <div class="service-cont-item" @click="maticPhotoclick()">
         <div class="service-item-text">
           <p class="p-text">汉装/变装体验</p>
           <p class="p-detail">精致汉服绝美场景</p>
@@ -24,7 +24,7 @@
         </div>
         <img class="p-img" src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/img8.png"/>
       </div>
-      <div class="service-cont-item">
+      <div class="service-cont-item" @click="maticPhotoclick()">
         <div class="service-item-text">
           <p class="p-text">出街约拍(预约)</p>
           <p class="p-detail">精致汉服绝美场景</p>
@@ -39,7 +39,7 @@
         <img class="p-img" src="https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/img10.png"/>
       </div>
     </div>
-    
+
     <!-- 服务说明 -->
     <!-- <photo-graphy v-if="graphyFlag"></photo-graphy> -->
     <!-- 预约时间 -->
