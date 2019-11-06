@@ -23,7 +23,8 @@ export default {
   data () {
     return {
       lists: [],
-      page: 1
+      page: 1,
+      hasNext: false
     }
   },
 
