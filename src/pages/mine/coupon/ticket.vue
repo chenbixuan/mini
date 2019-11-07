@@ -1,91 +1,83 @@
 <template>
   <div class="ticket-content">
     <h3 class="ticket-cont-tab common-cont-tab">
-      <span class="tab-sp" v-bind:class="{ 'on': ticketType === 1}" @click="ticketState(1)">未使用</span>
-      <span class="tab-sp" v-bind:class="{ 'on': ticketType === 2}" @click="ticketState(2)">使用记录</span>
-      <span class="tab-sp" v-bind:class="{ 'on': ticketType === 3}" @click="ticketState(3)">已过期</span>
+      <span class="tab-sp" v-bind:class="{ 'on': status === 'UNUSED' }" @click="changeTab('UNUSED')">未使用</span>
+      <span class="tab-sp" v-bind:class="{ 'on': status === 'USED' }" @click="changeTab('USED')">使用记录</span>
+      <span class="tab-sp" v-bind:class="{ 'on': status === 'OUT' }" @click="changeTab('OUT')">已过期</span>
     </h3>
     <div class="ticket-cont-item">
-      <ul class="ticket-cont-itemUl" v-if="ticketType===1">
-        <li class="ticket-cont-list">
+      <ul class="ticket-cont-itemUl">
+        <li class="ticket-cont-list" v-for="item in lists" :key="item.id">
           <div class="list-cardBox">
-            <div class="list-cardBox-fl">
-              <p class="money"><span>¥</span>5</p>
-              <p class="money-text">满68元可用</p>
+            <div class="list-cardBox-fl" :class="{ 'apply-cardBox': status !== 'UNUSED' }">
+              <p class="money"><span>¥</span>{{ item.value }}</p>
+              <p class="money-text">{{ type[item.type] }}</p>
             </div>
             <div class="list-cardBox-ct">
-              <h2 class="title">邀请有礼</h2>
-              <p class="p1">2019.10.01-2019.11.31</p>
-              <p class="p1">全部服务可用</p>
+              <h2 class="title">{{ item.name }}</h2>
+              <p class="p1">{{ item.createdAt }}-{{ item.expire }}</p>
+              <p class="p1">{{ userLimit[item.userLimit] }}可用</p>
             </div>
-            <div class="list-cardBox-btn">
-              立即使用
+            <div class="list-cardBox-btn" :class="{ 'apply-cardBtn': status !== 'UNUSED' }">
+              {{ st[item.status] }}
             </div>
-
           </div>
         </li>
-        
-      </ul>
-      <ul class="ticket-cont-itemUl" v-if="ticketType===2">
-        <li class="ticket-cont-list">
-          <div class="list-cardBox">
-            <div class="list-cardBox-fl apply-cardBox">
-              <p class="money"><span>¥</span>5</p>
-              <p class="money-text">满68元可用</p>
-            </div>
-            <div class="list-cardBox-ct">
-              <h2 class="title">邀请有礼</h2>
-              <p class="p1">2019.10.01-2019.11.31</p>
-              <p class="p1">全部服务可用</p>
-            </div>
-            <div class="list-cardBox-btn apply-cardBtn">
-              已使用
-            </div>
-
-          </div>
-        </li>
-        
-      </ul>
-      <ul class="ticket-cont-itemUl" v-if="ticketType===3">
-        <li class="ticket-cont-list">
-          <div class="list-cardBox">
-            <div class="list-cardBox-fl apply-cardBox">
-              <p class="money"><span>¥</span>5</p>
-              <p class="money-text">满68元可用</p>
-            </div>
-            <div class="list-cardBox-ct">
-              <h2 class="title">邀请有礼</h2>
-              <p class="p1">2019.10.01-2019.11.31</p>
-              <p class="p1">全部服务可用</p>
-            </div>
-            <div class="list-cardBox-btn apply-cardBtn">
-              已过期
-            </div>
-
-          </div>
-          </li>
-        
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      ticketType: 1
-    }
-  },
-  created: function () {
+  import moment from 'moment'
 
-  },
-  methods: {
-    ticketState: function (no) {
-      this.ticketType = no
+  import { get } from '../../../utils'
+
+  export default {
+    data: {
+      status: 'UNUSED',
+      lists: [],
+      hasNext: true,
+      page: 1,
+      userLimit: {
+        'NEW': '新用户',
+        'OLD': '老用户',
+        'NONE': '不限制'
+      },
+      type: {
+        'CASH': '现金券'
+      },
+      st: {
+        'UNUSED': '立即使用',
+        'USED': '已使用',
+        'OUT': '已过期'
+      }
+    },
+    created: function () {
+      this.loadMore()
+    },
+    onReachBottom () {
+      if (this.hasNext) this.loadMore()
+    },
+    methods: {
+      changeTab: function (status) {
+        this.status = status
+        this.lists = []
+        this.page = 1
+        this.hasNext = true
+
+        this.loadMore()
+      },
+      loadMore: async function () {
+        const { lists, hasNext } = await get(`/userCard?status=${this.status}&page=${this.page}`)
+        lists.map(item => {
+          item.expire = moment(item.expire).format('YYYY.MM.DD')
+          item.createdAt = moment(item.createdAt).format('YYYY.MM.DD')
+          this.lists.push(item)
+        })
+        this.hasNext = hasNext
+        this.page++
+      }
     }
   }
-}
 </script>
-
-

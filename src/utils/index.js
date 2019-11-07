@@ -22,6 +22,10 @@ export function formatTime (date) {
 
 // 请求封装
 function request (url, method, data, header = {}) {
+  let token = mpvue.getStorageSync('token')
+  if (token) {
+    header.authorization = 'Bear ' + token
+  }
   wx.showLoading({
     title: '加载中' // 数据请求前loading
   })
@@ -31,7 +35,8 @@ function request (url, method, data, header = {}) {
       method: method,
       data: data,
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json', // 默认值
+        ...header
       },
       success: function (res) {
         wx.hideLoading()

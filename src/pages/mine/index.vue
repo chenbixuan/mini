@@ -15,9 +15,9 @@
       </div>
       <!-- 已登录 -->
       <div class="memberBox-logined" v-if="token">
-        <p class="memberBox-p3">{{ userInfo.nickname || '哈哈' }}<img @click="editClick()" src="/static/images/img26.png" /></p>
+        <p class="memberBox-p3">{{ userInfo.nickname || '-' }}<img @click="editClick()" src="/static/images/img26.png" /></p>
         <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
-        <p class="memberBox-p5" @click="getUserInfo()">100<span>积分</span></p>
+        <p class="memberBox-p5" @click="getUserInfo()">{{ userInfo.jf }}<span>积分</span></p>
         <!-- <img class="memberBox-code" src="" /> -->
       </div>
       <div class="memberBox-item">
