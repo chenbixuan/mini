@@ -15,7 +15,7 @@
       </div>
       <!-- 已登录 -->
       <div class="memberBox-logined" v-if="token">
-        <p class="memberBox-p3">小轩<img @click="editClick()" src="/static/images/img26.png" /></p>
+        <p class="memberBox-p3">{{ userInfo.nickname || '哈哈' }}<img @click="editClick()" src="/static/images/img26.png" /></p>
         <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
         <p class="memberBox-p5" @click="getUserInfo()">100<span>积分</span></p>
         <!-- <img class="memberBox-code" src="" /> -->
@@ -35,7 +35,7 @@
         <li class="mine-cont-cardLi" @click="myOrder()"><img src="/static/images/img22.png"/>我的预约</li>
         <li class="mine-cont-cardLi" @click="myCard()"><img src="/static/images/img23.png"/>优惠卡券</li>
         <li class="mine-cont-cardLi"><img src="/static/images/img24.png"/>邀请好友</li>
-        <li class="mine-cont-cardLi"><img src="/static/images/img25.png"/>联系客服</li>
+        <li class="mine-cont-cardLi" @click="contact()"><img src="/static/images/img25.png"/>联系客服</li>
       </ul>
     </div>
     <div class="mine-cont-item">
@@ -78,67 +78,87 @@ export default {
   props: ['text'],
   data: {
     token: null,
-    openId: null
-    // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoi5bOwIiwiaWF0IjoxNTczMDY0NDE5LCJleHAiOjE1NzMwNjgwMTl9.GWimetrk7KyW-Aq8T7VcOohsp5v7LtfnNGfLxaz4MCE'
+    openId: null,
+    userInfo: {}
   },
   mounted () {
-    this.token = wx.getStorageSync('token')
-    console.log('this.token', this.token)
-    if (!this.token) this.getOpenId()
+    this.openId = this.$store.state.openId
+    if (!this.openId) {
+      this.getOpenId()
+    } else {
+      this.fetchWxUser({ openId: this.openId })
+    }
   },
   methods: {
     myOrder: function () {
-      console.log('22')
-      wx.navigateTo({
+      mpvue.navigateTo({
         url: '../mine/order/main'
       })
     },
     myCard: function () {
-      wx.navigateTo({
+      mpvue.navigateTo({
         url: '../mine/coupon/main'
       })
     },
     integralChange: function () {
-      wx.navigateTo({
+      mpvue.navigateTo({
         url: '../mine/integral/main'
       })
     },
     editClick: function () {
-      wx.navigateTo({
+      mpvue.navigateTo({
         url: '../mine/personal/main'
       })
     },
     getOpenId: function () {
       const that = this
-      wx.login({
+      mpvue.login({
         async success (res) {
-          console.log('res', res)
           if (res.code) {
-            // 发起网络请求
+            // 拿code去后台兑换openId
             const { openId } = await get(`/wxUser/getOpenId?code=${res.code}`)
-            console.log('openId', openId)
+            mpvue.setStorageSync('openId', openId)
+            that.$store.state.openId = openId
             that.openId = openId
           } else {
+            mpvue.showToast({
+              title: '登录异常',
+              icon: 'none'
+            })
             console.log('登录失败！' + res.errMsg)
           }
         }
       })
     },
+    // 获取微信信息
     getUserInfo: async function (e) {
       const userInfo = e.target.userInfo
       userInfo.openId = this.openId
       userInfo.nickname = userInfo.nickName
-      console.log('userInfo', userInfo)
 
-      const { token } = await post('/wxUser', userInfo)
-      if (token) {
-        try {
-          wx.setStorageSync('token', token)
-          this.token = token
-        } catch (e) {
-          console.log('e-->', e)
-        }
+      this.fetchWxUser(userInfo)
+    },
+    // 拿微信信息去后台注册
+    fetchWxUser: async function (userInfo) {
+      try {
+        const { token, wxUser } = await post('/wxUser', userInfo)
+        mpvue.setStorageSync('token', token)
+        this.$store.state.token = token
+        this.token = token
+        this.userInfo = wxUser
+      } catch (e) {
+        mpvue.showToast({
+          title: '授权异常',
+          icon: 'none'
+        })
+        console.log('e-->', e)
       }
+    },
+    contact: function () {
+      mpvue.showToast({
+        title: '不理你，哈哈!',
+        icon: 'none'
+      })
     }
   }
 }
