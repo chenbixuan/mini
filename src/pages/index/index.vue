@@ -1,10 +1,10 @@
 <template>
   <div class="home-content">
     <div class="home-banner-one">
-      <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-        <block v-for="(item, index) in imgUrls" :key="index" >
+      <swiper v-if="banner.length > 0" indidator-dots="banner.length > 1">
+        <block v-for="(item, index) in banner" :key="index" >
           <swiper-item>
-            <image :src="item" mode="scaleToFill"></image>
+            <image :src="item.file.url" mode="scaleToFill"></image>
           </swiper-item>
         </block>
       </swiper>
@@ -12,14 +12,14 @@
     <div class="home-banner-two">
       <h2 class="home-banner-title">至尊服务<span>SERVICE</span></h2>
       <div class="home-banner-twoCon">
-        <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-          <block v-for="(item, index) in imgUrls" :key="index" >
+        <swiper v-if="service.length > 0" indidator-dots="imgUservicerls.length > 1">
+          <block v-for="(item, index) in service" :key="index" >
             <swiper-item @click="commonClick()">
               <div class="home-two-text">
                 <p class="detail">汉服体验</p>
                 <p class="arrow-icon">精致汉服绝美场景</p>
               </div>
-              <image :src="item" mode="scaleToFill"></image>
+              <image :src="item.file.url" mode="scaleToFill"></image>
             </swiper-item>
           </block>
         </swiper>
@@ -28,91 +28,62 @@
     <div class="home-banner-three">
       <h2 class="home-banner-title">精选套餐<span>SELECTED</span></h2>
       <div class="home-banner-threeCon">
-        <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-          <block v-for="(item, index) in imgUrls" :key="index" >
+        <swiper v-if="service1.length > 0" indidator-dots="service1.length > 1">
+          <block v-for="(item, index) in service1" :key="index" >
             <swiper-item @click="commonClick()">
-              <!-- <div class="home-three-text">
-                <img src="/static/images/home-line.png"/>
-                <span class="sp-word">日出东南隅,照我秦氏楼</span>
-              </div> -->
-              <image :src="item" mode="scaleToFill"></image>
+              <image :src="item.file.url" mode="scaleToFill"></image>
             </swiper-item>
           </block>
         </swiper>
       </div>
-      
+
     </div>
     <div class="home-banner-four">
       <h2 class="home-banner-title">服务展示1</h2>
       <p class="home-banner-describe">描述描述</p>
       <div class="home-banner-fourCon">
-        <swiper v-if="imgUrls.length > 0" indidator-dots="imgUrls.length > 1" >
-          <block v-for="(item, index) in imgUrls" :key="index" >
+        <swiper v-if="service2.length > 0" indidator-dots="service2.length > 1">
+          <block v-for="(item, index) in service2" :key="index" >
             <swiper-item>
-              <!-- <div class="home-three-text">
-                <img src="/static/images/home-line.png"/>
-                <span class="sp-word">日出东南隅,照我秦氏楼</span>
-              </div> -->
-              <image :src="item" mode="scaleToFill"></image>
+              <image :src="item.file.url" mode="scaleToFill"></image>
             </swiper-item>
           </block>
         </swiper>
       </div>
-      
     </div>
-    
-    
   </div>
 </template>
 
 <script>
-import { formatTime } from '@/utils/index'
 import { get } from '../../utils'
-// import card from '@/components/card'
 export default {
   components: {
-    // card
   },
 
   data () {
     return {
-      logs: [],
-      imgUrls: [
-        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/1.jpg',
-        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/2.png',
-        'https://chenbixuan.oss-cn-hangzhou.aliyuncs.com/test/3.jpeg'
-      ],
+      banner: [],
+      service: [],
+      service1: [],
+      service2: [],
       indicatorDots: true,
       autoplay: true,
       interval: 3000,
       duration: 500
     }
   },
-  // methods: {
-  // },
-  created () {
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-    }
-    this.logs = logs.map(log => formatTime(new Date(log)))
-  },
+
   mounted () {
     this.getHomePage()
   },
 
-  // onReachBottom () {
-  //   this.getHomePage()
-  // },
   methods: {
     async getHomePage () {
-      const kz = await get(`/banner`)
-      console.log(kz)
-      kz.rows.map(item => {
-
-      })
+      const banner = await get(`/banner`)
+      this.banner = banner['INDEX']
+      this.service = banner['INDEX_SERVICE']
+      this.service1 = banner['SERVICE1']
+      this.service2 = banner['SERVICE2']
     },
     commonClick: function () {
       wx.navigateTo({
