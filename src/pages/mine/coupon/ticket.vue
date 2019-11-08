@@ -54,6 +54,8 @@
       }
     },
     created: function () {
+    },
+    mounted: function () {
       this.loadMore()
     },
     onReachBottom () {
