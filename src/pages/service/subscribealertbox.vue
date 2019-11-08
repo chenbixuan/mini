@@ -58,6 +58,8 @@ export default {
   },
   beforeDestroy () {
     EventBus.$off('GBKBalance')
+    this.fadeInFlag = false
+    this.fadeOutFlag = false
   }
 }
 </script>

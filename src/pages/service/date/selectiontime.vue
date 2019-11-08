@@ -28,7 +28,7 @@
       </div>
     </div>
     
-    <div class="btn selectiontime-cont-btn" @click="handleOpen1">预约</div>
+    <div class="btn selectiontime-cont-btn" @click="handleOpen1()">预约</div>
     <!-- <i-action-sheet :visible="visible1" :actions="actions1" show-cancel @click="handleCancel1" bind:click="handleClickItem1" > -->
     <subscribe-alert-box></subscribe-alert-box>
     <!-- </i-action-sheet> -->
