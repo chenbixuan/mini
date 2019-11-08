@@ -24,7 +24,7 @@ export function formatTime (date) {
 function request (url, method, data, header = {}) {
   let token = mpvue.getStorageSync('token')
   if (token) {
-    header.authorization = 'Bear ' + token
+    header.authorization = 'Bearer ' + token
   }
   wx.showLoading({
     title: '加载中' // 数据请求前loading
@@ -57,6 +57,12 @@ export function get (url, data) {
 }
 export function post (url, data) {
   return request(url, 'POST', data)
+}
+export function put (url, data) {
+  return request(url, 'PUT', data)
+}
+export function destroy (url, data) {
+  return request(url, 'DELETE', data)
 }
 
 export function toLogin () {

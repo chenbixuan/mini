@@ -79,7 +79,7 @@ export default {
 
   methods: {
     async getHomePage () {
-      const banner = await get(`/banner`)
+      const banner = await get(`/banner?enable=true`)
       this.banner = banner['INDEX']
       this.service = banner['INDEX_SERVICE']
       this.service1 = banner['SERVICE1']
