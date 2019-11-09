@@ -92,23 +92,6 @@ export default {
       console.log(1)
       let clickDay = event.mp.detail.day
       console.log(clickDay)
-      this.dayStyle.push({month: 'current', day: clickDay, color: 'green'})
-      console.log(event)
-      let changeDay = event.mp.detail.color
-      let changeBg = event.mp.detail.background
-      console.log(clickDay)
-      console.log(changeDay)
-      console.log(changeBg)
-      this.$mp.page.setData({
-        changeDay: '#fff',
-        changeBg: '#9E312E'
-      })
-
-      const { year, month, day } = event.mp.detail
-      this.year = year
-      this.month = month
-      this.day = day
-
       this.dayStyle.shift()
       console.log(this.dayStyle)
       this.dayStyle.push({month: 'current', day: clickDay, color: 'white', background: '#9E312E', borderRadius: '50%'})

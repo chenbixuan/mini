@@ -25,7 +25,9 @@ export default {
       lists: [],
       page: 1,
       hasNext: false,
-      jsonText: []
+      jsonText1: [],
+      jsonText2: [],
+      jsonText3: []
     }
   },
 
@@ -49,19 +51,52 @@ export default {
       this.page++
     },
     previewImage: function (index, key) {
+      console.log(index, key)
       let that = this
-      for (var i = 0; i < that.lists.length; i++) {
-        let optionLists = that.lists[i].files
-        for (var j = 0; j < optionLists.length; j++) {
-          that.jsonText.push(optionLists[j].url)
-        }
+      that.jsonText1 = []
+      that.jsonText2 = []
+      that.jsonText3 = []
+      // for (var i = 0; i < that.lists.length; i++) {
+      //   let optionLists = that.lists[i].files
+      //   for (var j = 0; j < optionLists.length; j++) {
+      //     that.jsonText.push(optionLists[j].url)
+      //   }
+      // }
+      let option1 = that.lists[0].files
+      let option2 = that.lists[1].files
+      let option3 = that.lists[2].files
+
+      for (var j = 0; j < option1.length; j++) {
+        that.jsonText1.push(option1[j].url)
       }
-      // var jsonText = new Array(that.lists[index].files[key].url)
-      // var current = e.target.dataset.src
-      wx.previewImage({
-        current: that.lists[index].files[key].url, // 当前显示图片的http链接
-        urls: that.jsonText // 需要预览的图片http链接列表
-      })
+      for (var f = 0; f < option2.length; f++) {
+        that.jsonText2.push(option2[f].url)
+      }
+      for (var n = 0; n < option3.length; n++) {
+        that.jsonText3.push(option3[n].url)
+      }
+
+      console.log(that.jsonText1)
+      console.log(that.jsonText2)
+      console.log(that.jsonText3)
+      if (key >= 0 && key < 9) {
+        wx.previewImage({
+          current: option1[key].url, // 当前显示图片的http链接
+          urls: that.jsonText1 // 需要预览的图片http链接列表
+        })
+      }
+      if (key >= 9 && key < 18) {
+        wx.previewImage({
+          current: option2[key].url, // 当前显示图片的http链接
+          urls: that.jsonText2 // 需要预览的图片http链接列表
+        })
+      }
+      if (key >= 18 && key < 27) {
+        wx.previewImage({
+          current: option3[key].url, // 当前显示图片的http链接
+          urls: that.jsonText3 // 需要预览的图片http链接列表
+        })
+      }
     }
   }
 }
