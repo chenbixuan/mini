@@ -1,7 +1,7 @@
 <template>
   <div class="alertbox-content">
-    <div class="mask-black " :class="{'fadeIn':fadeInFlag,'fadeOut':fadeOutFlag}"></div>
-    <div class="alertbox-cont-main" :class="{'fadeInUp':fadeInFlag,'fadeOutDown':fadeOutFlag}">
+    <div class="mask-black" v-if="switchFlag" @click="closeWind()"></div>
+    <div class="alertbox-cont-main" v-if="switchFlag" :animation='animationData'>
       <h2 class="alertbox-cont-title">预约信息确认<span><img src="/static/images/img19.png" @click="closeWind()" /></span></h2>
       <div class="alertbox-cont-text">
         <p><img src="/static/images/img14.png" /><span class="sp1">主题摄影</span></p>
@@ -26,9 +26,16 @@ export default {
       period: '',
       memberAgencyFrom: false,
       fadeInFlag: false,
-      fadeOutFlag: false
+      fadeOutFlag: false,
+      chooseSize: false,
+      animationData: {}
       // fadeInUpFlag: false
       // fadeOutDownFlag: false
+    }
+  },
+  computed: {
+    switchFlag () {
+      return this.$store.state.switchFlag
     }
   },
   created: function () {
@@ -44,6 +51,10 @@ export default {
       this.period = period
     })
   },
+  // onUnload () {
+  //   this.fadeInFlag = false
+  //   this.fadeOutFlag = false
+  // },
   methods: {
     ShowAgency: function () {
       // this.memberAgencyFrom = true
@@ -69,18 +80,73 @@ export default {
         })
       }
     },
+    // showshadow: function (data) {
+    //   console.log(this.typeFlag)
+    //   if (data) {
+    //     console.log('1212121')
+    //     this.chooseSezi()
+    //   }
+    // },
     closeWind: function () {
-      this.$nextTick(() => {
-        this.fadeInFlag = false
-        this.fadeOutFlag = true
+      this.$store.dispatch('setSwitchFlagState', false)
+    },
+
+    // 动画函数
+    chooseSezi: function (e) {
+      // 用that取代this，防止不必要的情况发生
+      var that = this
+      // 创建一个动画实例
+      var animation = wx.createAnimation({
+        // 动画持续时间
+        duration: 500,
+        // 定义动画效果，当前是匀速
+        timingFunction: 'linear'
       })
+      // 将该变量赋值给当前动画
+      // that.animation = animation
+      // 先在y轴偏移，然后用step()完成一个动画
+      animation.translateY(200).step()
+      // 用setData改变当前动画
+
+      that.animationData = animation.export()
+      // this.chooseSize = false
+
+      setTimeout(function () {
+        animation.translateY(0).step()
+        that.animationData = animation.export()
+        // that.clearcart = true
+      }, 100)
+    // }
+      // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动 滑动时间
+      // setTimeout(function () {
+      //   animation.translateY(0).step()
+      //   that.setData({
+      //     animationData: animation.export(),
+      //     clearcart: false
+      //   })
+      // }, 100)
+    },
+    // 隐藏
+    hideModal: function (e) {
+      var that = this
+      var animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'linear'
+      })
+      // that.animation = animation
+      animation.translateY(700).step()
+      that.animationData = animation.export()
+      setTimeout(function () {
+        animation.translateY(0).step()
+        that.animationData = animation.export()
+        that.switchFlag = false
+      }, 500)
     }
-  },
-  beforeDestroy () {
-    EventBus.$off('GBKBalance')
-    this.fadeInFlag = false
-    this.fadeOutFlag = false
   }
+  // onShow () {
+  //   this.chooseSize = false
+  // }
+
 }
 </script>
 

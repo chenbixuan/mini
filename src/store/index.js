@@ -5,13 +5,27 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const state = {
-  token: mpvue.getStorageSync('token'),
-  openId: mpvue.getStorageSync('openId')
-}
+// const state = {
+//   token: mpvue.getStorageSync('token'),
+//   openId: mpvue.getStorageSync('openId'),
+//   switchFlag: false
+// },
 
 export default new Vuex.Store({
-  state
+  // state,
   // actions,
   // mutations
+  state: {
+    switchFlag: false
+  },
+  mutations: {
+    setSwitchFlag (state, name) {
+      state.switchFlag = name
+    }
+  },
+  actions: {
+    setSwitchFlagState: (context, name) => {
+      context.commit('setSwitchFlag', name)
+    }
+  }
 })
