@@ -24,7 +24,8 @@ export default {
     return {
       lists: [],
       page: 1,
-      hasNext: false
+      hasNext: false,
+      jsonText: []
     }
   },
 
@@ -49,11 +50,17 @@ export default {
     },
     previewImage: function (index, key) {
       let that = this
-      var jsonText = new Array(that.lists[index].files[key].url)
+      for (var i = 0; i < that.lists.length; i++) {
+        let optionLists = that.lists[i].files
+        for (var j = 0; j < optionLists.length; j++) {
+          that.jsonText.push(optionLists[j].url)
+        }
+      }
+      // var jsonText = new Array(that.lists[index].files[key].url)
       // var current = e.target.dataset.src
       wx.previewImage({
         current: that.lists[index].files[key].url, // 当前显示图片的http链接
-        urls: jsonText // 需要预览的图片http链接列表
+        urls: that.jsonText // 需要预览的图片http链接列表
       })
     }
   }
