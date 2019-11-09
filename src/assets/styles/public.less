@@ -22,14 +22,15 @@ body{
     // left: 0rpx;
     // top:0rpx;
     .mask-black{
-      background: rgba(0, 0, 0, 0.6);
+      background-color: #000;
+      opacity: 0.5;
       width: 100%;
       height: 100%;
       position: fixed;
       z-index: 22;
       top:0rpx;
       left: 0rpx;
-      display: none;
+      transition: all;
     }
     .alertbox-cont-main{
       width: 100%;
@@ -41,7 +42,6 @@ body{
       background: #fff;
       color: #272727;
       padding-bottom: 40rpx;
-      display: none;
   
       .alertbox-cont-title{
         font-size: 32rpx;

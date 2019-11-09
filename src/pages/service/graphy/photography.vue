@@ -26,18 +26,26 @@
 </template>
 
 <script>
-import EventBus from 'scripts/EventBus'
+// import EventBus from 'scripts/EventBus'
 export default {
+  data () {
+    return {
+      dd: false
+    }
+  },
   mounted: function () {
 
   },
   methods: {
     nextStep: function () {
-      EventBus.$off('GBKBalance')
+      // EventBus.$off('GBKBalance')
       wx.navigateTo({
         url: '../date/main'
       })
+      // EventBus.$emit('GBKBalance', this.dd)
+      this.$store.dispatch('setSwitchFlagState', false)
     }
+
   }
 }
 </script>

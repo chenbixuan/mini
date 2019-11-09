@@ -9,7 +9,7 @@
           header-style="header" 
           board-style="board" 
           next="false" prev="false" shiow-more-days='true'
-          :days-color="dayStyle" @dayClick="dayClick" weeks-type="cn"/>
+          :days-color="dayStyle" @dayClick="dayClick"  @dateChange="dayChange" weeks-type="cn"/>
         </div>
       </div>
       <div class="selectiontime-cont-time">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import EventBus from 'scripts/EventBus'
+// import EventBus from 'scripts/EventBus'
 import subscribeAlertBox from '@/pages/service/subscribealertbox'
 const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'June.', 'July.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 export default {
@@ -68,7 +68,7 @@ export default {
         }
 
       ],
-      dd: false
+      succState: false
     }
   },
   mounted: function () {
@@ -85,17 +85,20 @@ export default {
       console.log(1)
       let clickDay = event.mp.detail.day
       console.log(clickDay)
-      this.dayStyle.push({month: 'current', day: clickDay, color: 'green'})
-      console.log(event)
-      let changeDay = event.mp.detail.color
-      let changeBg = event.mp.detail.background
-      console.log(clickDay)
-      console.log(changeDay)
-      console.log(changeBg)
-      this.$mp.page.setData({
-        changeDay: '#fff',
-        changeBg: '#9E312E'
-      })
+      this.dayStyle.shift()
+      console.log(this.dayStyle)
+      this.dayStyle.push({month: 'current', day: clickDay, color: 'white', background: '#9E312E', borderRadius: '50%'})
+      let datStyleForApp = this.dayStyle
+      this.$mp.page.setData({datStyleForApp})
+      this.$forceUpdate()
+      // console.log(event)
+      // let changeDay = event.mp.detail.color
+      // let changeBg = event.mp.detail.background
+      // console.log(clickDay)
+      // console.log(changeDay)
+      // console.log(changeBg)
+      // changeDay = '#fff'
+      // changeBg = '#9E312E'
       // let changeDay = `dayStyle[1].day`
       // let changeBg = `dayStyle[1].background`
       // this.setData({
@@ -104,8 +107,14 @@ export default {
       // })
     },
     handleOpen1 () {
-      EventBus.$emit('GBKBalance')
+      // subscribeAlertBox.methods.showshadow()
+      // this.succState = true
+      this.$store.dispatch('setSwitchFlagState', true)
+      // EventBus.$emit('GBKBalance', this.succState)
       // this.dd = true
+    },
+    dayChange () {
+      console.log('qqqqqq')
     }
   }
 }
