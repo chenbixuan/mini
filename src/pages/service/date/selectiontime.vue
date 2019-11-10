@@ -9,7 +9,7 @@
           header-style="header"
           board-style="board"
           next="false" prev="false" shiow-more-days='true'
-          :days-color="dayStyle" @dayClick="dayClick"  @dateChange="dayChange" weeks-type="cn"/>
+          :days-color="dayStyle" @dayClick="dayClick"  @dateChange="dayChange" weeks-type="cn" @nextMonth="next" @prevMonth="prev"/>
         </div>
       </div>
       <div class="selectiontime-cont-time">
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// import moment from 'moment'
 import { get } from '@/utils'
 import EventBus from 'scripts/EventBus'
 import subscribeAlertBox from '@/pages/service/subscribealertbox'
@@ -76,6 +77,9 @@ export default {
     this.getShop()
 
     let today = new Date().getDate()
+    console.log(this.yearDate)
+    console.log(this.monthDate)
+    console.log(this.dayTime)
     this.dayStyle = []
     this.dayStyle.push({month: 'current', day: today, color: '#fff', background: '#9E312E', borderRadius: '50%'})
   },
@@ -92,6 +96,15 @@ export default {
     },
     // 给点击的日期设置一个背景颜色
     dayClick: function (event) {
+      // console.log(event)
+      // var dataA = `${this.yearDate}-${this.monthDate}-${event.mp.detail.day}`
+      // var dataB = moment(new Date()).format('YYYY-MM-DD')
+      // console.log(dataA)
+      // console.log(dataB)
+      // console.log(dataB > dataA)
+      // if (dataB.diff(dataA) > 0) {
+      //   this.dayStyle.push({month: 'current', day: '', color: '', background: '', borderRadius: ''})
+      // }
       console.log(1)
       let clickDay = event.mp.detail.day
       this.dayTime = event.mp.detail.day
@@ -132,6 +145,19 @@ export default {
     },
     dayChange (e) {
       console.log(e)
+      this.commonDate(e)
+      console.log('qqqqqq')
+    },
+    next (e) {
+      console.log(e)
+      this.commonDate(e)
+      this.$forceUpdate()
+    },
+    prev (e) {
+      console.log(e)
+      this.commonDate(e)
+    },
+    commonDate (e) {
       this.yearDate = e.target.currentYear
       this.monthDate = e.target.currentMonth
       this.dayStyle.shift()
@@ -139,7 +165,6 @@ export default {
       let datStyleForApp = this.dayStyle
       this.$mp.page.setData({datStyleForApp})
       this.$forceUpdate()
-      console.log('qqqqqq')
     }
   }
 }
