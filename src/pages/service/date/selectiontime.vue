@@ -127,6 +127,11 @@ export default {
       // this.dd = true
     },
     dayChange () {
+      this.dayStyle.shift()
+      this.dayStyle.push({month: 'current', day: '', color: '', background: '', borderRadius: ''})
+      let datStyleForApp = this.dayStyle
+      this.$mp.page.setData({datStyleForApp})
+      this.$forceUpdate()
       console.log('qqqqqq')
     }
   }
