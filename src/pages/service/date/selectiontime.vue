@@ -67,7 +67,10 @@ export default {
       }
 
     ],
-    dd: false
+    dd: false,
+    yearDate: '',
+    monthDate: '',
+    dayTime: ''
   },
   mounted: function () {
     this.getShop()
@@ -91,6 +94,7 @@ export default {
     dayClick: function (event) {
       console.log(1)
       let clickDay = event.mp.detail.day
+      this.dayTime = event.mp.detail.day
       console.log(clickDay)
       this.dayStyle.shift()
       console.log(this.dayStyle)
@@ -102,7 +106,7 @@ export default {
     handleOpen1 () {
       EventBus.$emit('GBKBalance', {
         shop: this.shop,
-        date: `${this.year}-${this.month}-${this.day}`,
+        date: `${this.yearDate}-${this.monthDate}-${this.dayTime}`,
         period: this.period
       })
 
@@ -126,7 +130,10 @@ export default {
       // EventBus.$emit('GBKBalance', this.succState)
       // this.dd = true
     },
-    dayChange () {
+    dayChange (e) {
+      console.log(e)
+      this.yearDate = e.target.currentYear
+      this.monthDate = e.target.currentMonth
       this.dayStyle.shift()
       this.dayStyle.push({month: 'current', day: '', color: '', background: '', borderRadius: ''})
       let datStyleForApp = this.dayStyle
