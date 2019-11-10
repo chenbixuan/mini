@@ -68,9 +68,9 @@ export default {
 
     ],
     dd: false,
-    yearDate: '',
-    monthDate: '',
-    dayTime: ''
+    yearDate: new Date().getFullYear(),
+    monthDate: (new Date().getMonth()) + 1,
+    dayTime: new Date().getDate()
   },
   mounted: function () {
     this.getShop()
