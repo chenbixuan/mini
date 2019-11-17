@@ -60,6 +60,7 @@
   },
   "usingComponents": {
     "calendar": "plugin://calendar/calendar",
-    "i-action-sheet": "../static/ivew/action-sheet/index"
+    "i-action-sheet": "../static/ivew/action-sheet/index",
+    "i-modal": "../static/ivew/modal/index"
   }
 }
