@@ -1,41 +1,60 @@
 <template>
   <div class="mine-content">
-    <div class="mine-cont-memberBox">
-      <!-- 未登录 -->
-      <div class="memberBox-notlogin" v-if="!token">
-        <p class="memberBox-p1">沉壁轩｜灰姑娘<span>会员中心</span></p>
-<!--        <p class="memberBox-p2">加入会员 点亮特权</p>-->
-        <button
-          class="memberBox-p2"
-          open-type="getUserInfo"
-          @getuserinfo="getUserInfo"
-        >
-          加入会员 点亮特权
-        </button>
-      </div>
-      <!-- 已登录 -->
-      <div class="memberBox-logined" v-if="token">
-        <p class="memberBox-p3">{{ userInfo.nickname || '-' }}<img @click="editClick()" src="/static/images/img26.png" /></p>
-        <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
-        <p class="memberBox-p5" @click="getUserInfo()">{{ userInfo.jf }}<span>积分</span></p>
-        <!-- <img class="memberBox-code" src="" /> -->
-      </div>
-      <div class="memberBox-item">
-        <ul class="memberBox-ulBox">
-          <li class="memberBox-ulBox-li">生日礼遇</li>
-          <li class="memberBox-ulBox-li" @click="integralChange()">积分兑换</li>
-          <li class="memberBox-ulBox-li">会员活动</li>
-          <li class="memberBox-ulBox-li">专项服务</li>
-        </ul>
-      </div>
+    <div class="mine-cont-header">
+      <div class="mine-cont-memberBox">
+        <!-- 未登录 -->
+        <div class="memberBox-notlogin" v-if="!token">
+          <p class="memberBox-p1"><span>会员中心</span></p>
+          <!-- <p class="memberBox-p2">加入会员 点亮特权</p>-->
+          <button
+            class="memberBox-p2"
+            open-type="getUserInfo"
+            @getuserinfo="getUserInfo"
+          >
+            加入会员 点亮特权
+          </button>
+        </div>
+        <!-- 已登录 -->
+        <div class="memberBox-logined" v-if="token">
+          <p class="memberBox-p3">{{ userInfo.nickname || '-' }}<img @click="editClick()" src="/static/images/img32.png" /></p>
+          <p class="memberBox-p4">立即领取20积分与全部会员权益</p>
+          <p class="memberBox-p5" @click="getUserInfo()">{{ userInfo.jf }}<span>积分</span></p>
+          <img class="memberBox-code" src="/static/images/img33.png" />
+        </div>
+        <div class="memberBox-item">
+          <ul class="memberBox-ulBox">
+            <li class="memberBox-ulBox-li" :class="{'on':token}">
+              <img class="i-icon" src="/static/images/img28.png"/>
+              <img class="ia-icon" src="/static/images/img28a.png"/>
+              <p>生日礼遇</p>
+            </li>
+            <li class="memberBox-ulBox-li" @click="integralChange()">
+              <img class="i-icon" src="/static/images/img29.png"/>
+              <img class="ia-icon" src="/static/images/img29a.png"/>
+              <p>积分兑换</p>
+            </li>
+            <li class="memberBox-ulBox-li">
+              <img class="i-icon" src="/static/images/img30.png"/>
+              <img class="ia-icon" src="/static/images/img30a.png"/>
+              <p>会员活动</p>
+            </li>
+            <li class="memberBox-ulBox-li">
+              <img class="i-icon" src="/static/images/img31.png"/>
+              <img class="ia-icon" src="/static/images/img31a.png"/>
+              <p>专项服务</p>
+            </li>
+          </ul>
+        </div>
 
+      </div>
     </div>
+    
     <div class="mine-cont-card">
       <ul class="mine-cont-cardUl">
-        <li class="mine-cont-cardLi" @click="myOrder()"><img src="/static/images/img22.png"/>我的预约</li>
-        <li class="mine-cont-cardLi" @click="myCard()"><img src="/static/images/img23.png"/>优惠卡券</li>
-        <li class="mine-cont-cardLi"><img src="/static/images/img24.png"/>邀请好友</li>
-        <li class="mine-cont-cardLi" @click="contact()"><img src="/static/images/img25.png"/>联系客服</li>
+        <li class="mine-cont-cardLi" @click="myOrder()"><img class="card-icon" src="/static/images/img34.png"/>我的预约</li>
+        <li class="mine-cont-cardLi" @click="myCard()"><img class="card-icon" src="/static/images/img35.png"/>优惠卡券</li>
+        <li class="mine-cont-cardLi"><img class="card-icon" src="/static/images/img36.png"/>邀请好友<span class="courtesy"><img src="/static/images/img38.png"/></span></li>
+        <li class="mine-cont-cardLi" @click="contact()"><img class="card-icon" src="/static/images/img37.png"/>联系客服</li>
       </ul>
     </div>
     <div class="mine-cont-item">

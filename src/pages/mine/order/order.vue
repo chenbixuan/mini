@@ -6,18 +6,24 @@
     </h3>
     <div class="order-cont-item">
       <ul class="order-cont-itemUl">
-        <li class="order-cont-list" v-for="item in lists" :key="item.id">
+        <li class="order-cont-list" v-for="item in lists" v-if="lists.length>0" :key="item.id">
           <h2 class="list-title">
             {{ type[item.type] }}<span class="list-text">预约号：{{ item.no }}</span>
             <span class="orderBtn" v-if="item.status === 'WAITING'" @click="cancel(item.id)">取消预约</span>
-            <span class="orderText" v-if="item.status === 'FINISHED'">已完成</span>
+            <span class="orderText" v-if="item.status === 'FINISHED'">删除</span>
           </h2>
-          <p class="list-time"><img src="/static/images/img22.png"/>{{ item.date }} {{ item.period }} 到店</p>
+          <p class="list-time"><img src="/static/images/img42.png"/>{{ item.date }} {{ item.period }} 到店</p>
           <p class="list-address">
-            <img class="list-address-icon" src="/static/images/img22.png"/>
+            <img class="list-address-icon" src="/static/images/img43.png"/>
             <span class="list-address-text">{{ item.shop.name }}（{{ item.shop.addr }}）<span class="sp1">{{ item.shop.addrJc }}</span></span>
-            <span class="list-address-navigation"><img src="/static/images/img22.png"/></span>
+            <span class="list-address-navigation"><img src="/static/images/img39.png"/></span>
           </p>
+        </li>
+        <li class="noOrder-list" v-if="lists.length==0">
+          <div class="noOrder-listDiv">
+            <img src="/static/images/img44.png" />
+            <p>暂无预约单</p>
+          </div>
         </li>
       </ul>
 <!--      <ul class="order-cont-itemUl" v-if="status===2">-->
@@ -78,6 +84,10 @@ export default {
             } else {
               // 重新渲染列表
               that.lists = that.lists.filter(item => item.id !== id)
+              mpvue.showToast({
+                title: '取消成功',
+                icon: 'none'
+              })
             }
           }
         }

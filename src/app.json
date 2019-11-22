@@ -4,6 +4,7 @@
     "pages/mine/main",
     "pages/service/main",
     "pages/works/main",
+    "pages/address/main",
     "pages/service/graphy/main",
     "pages/service/date/main",
     "pages/service/subscribesucc/main",
@@ -12,6 +13,7 @@
     "pages/mine/integral/main",
     "pages/mine/personal/main",
     "pages/mine/name/main",
+    "pages/mine/phone/main",
     "pages/index/news/main"
 
   ],
@@ -23,7 +25,7 @@
   },
   "tabBar": {
     "color": "#999",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "#fff",
     "selectedColor": "#333",
     "borderTopStyle": "2rpx solid #bababa",
 
@@ -42,6 +44,11 @@
       "pagePath": "pages/works/main",
       "iconPath": "static/tabs/works-icon.png",
       "selectedIconPath": "static/tabs/works-iconactive.png"
+    }, {
+      "text": "门店",
+      "pagePath": "pages/address/main",
+      "iconPath": "static/tabs/door-icon.png",
+      "selectedIconPath": "static/tabs/door-iconactive.png"
     }, {
       "text": "我的",
       "pagePath": "pages/mine/main",

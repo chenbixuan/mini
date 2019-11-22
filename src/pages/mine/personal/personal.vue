@@ -1,6 +1,6 @@
 <template>
-  <div class="personal-home">
-    <div class="personal-home-banner"> 
+  <div class="personal-home" :class="{'personal-padTop':!infoFlag}">
+    <div class="personal-home-banner" v-if="infoFlag" @click="infoCilck()"> 
       <h2>补全个人资料即可点亮全部会员权益</h2>
       <p>立刻获取60积分</p>
     </div>
@@ -28,7 +28,7 @@
       <div class="personal-cont-fromBox">
         <h2 class="fromBox-title">账号安全</h2>
         <ul class="fromBox-ul">
-          <li class="fromBox-list">
+          <li class="fromBox-list" @click="phoneInput()">
             手机号码<span>18129957770<img src="/static/images/img27.png" /></span>
           </li>
           
@@ -43,7 +43,8 @@ import moment from 'moment'
 export default {
   data () {
     return {
-      date: moment(new Date()).format('YYYY-MM-DD')
+      date: moment(new Date()).format('YYYY-MM-DD'),
+      infoFlag: true
     }
   },
   created: function () {
@@ -55,9 +56,17 @@ export default {
         url: '../name/main'
       })
     },
+    phoneInput: function () {
+      wx.navigateTo({
+        url: '../phone/main'
+      })
+    },
     bindDateChange: function (e) {
       console.log('picker发送选择改变，携带值为', e.mp.detail.value)
       this.date = e.mp.detail.value
+    },
+    infoCilck: function () {
+      this.infoFlag = false
     }
   }
 }

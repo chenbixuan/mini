@@ -7,7 +7,7 @@
     </h3>
     <div class="ticket-cont-item">
       <ul class="ticket-cont-itemUl">
-        <li class="ticket-cont-list" v-for="item in lists" :key="item.id">
+        <li class="ticket-cont-list" v-for="item in lists" :key="item.id" v-if="lists.length>0">
           <div class="list-cardBox">
             <div class="list-cardBox-fl" :class="{ 'apply-cardBox': status !== 'UNUSED' }">
               <p class="money"><span>¥</span>{{ item.value }}</p>
@@ -18,9 +18,23 @@
               <p class="p1">{{ item.createdAt }}-{{ item.expire }}</p>
               <p class="p1">{{ userLimit[item.userLimit] }}可用</p>
             </div>
-            <div class="list-cardBox-btn" :class="{ 'apply-cardBtn': status !== 'UNUSED' }">
+            <!-- 未使用 -->
+            <div class="list-cardBox-btn" v-if="status === 'UNUSED'">
               {{ st[item.status] }}
             </div>
+            <!-- 已使用 -->
+            <div class="list-cardBox-usedIcon" v-if="status === 'USED'"><img src="/static/images/img46.png" /></div>
+            <!-- 已过期 -->
+            <div class="list-cardBox-usedIcon" v-if="status === 'OUT'"><img src="/static/images/img45.png" /></div>
+
+          </div>
+        </li>
+        <li class="noOrder-list" v-if="lists.length==0">
+          <div class="noOrder-listDiv">
+            <img src="/static/images/img44.png" />
+            <p v-if="status === 'UNUSED'">暂无优惠卡券</p>
+            <p v-if="status === 'USED'">暂无使用记录</p>
+            <p v-if="status === 'OUT'">暂无过期卡券</p>
           </div>
         </li>
       </ul>

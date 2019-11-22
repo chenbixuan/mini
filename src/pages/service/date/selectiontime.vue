@@ -93,7 +93,7 @@ export default {
     this.dayStyle = []
     this.clickDayObj = null
     this.setReadOnlyStyle()
-    this.clickDayObj = {month: 'current', day: today, color: '#fff', background: '#9E312E', borderRadius: '50%'}
+    this.clickDayObj = {month: 'current', day: today, color: '#353535', background: '#E7C394', borderRadius: '50%'}
     this.selectDay = this.dayTime = new Date().getDate()
     this.selectMonth = this.monthDate = (new Date().getMonth()) + 1
     this.selectYear = this.yearDate = new Date().getFullYear()
@@ -147,7 +147,7 @@ export default {
         }
       }
       console.log(this.dayStyle)
-      this.clickDayObj = {month: 'current', day: clickDay, color: 'white', background: '#9E312E', borderRadius: '50%'}
+      this.clickDayObj = {month: 'current', day: clickDay, color: '#353535', background: '#E7C394', borderRadius: '50%'}
       this.dayStyle.push(this.clickDayObj)
       let datStyleForApp = this.dayStyle
       this.$mp.page.setData({datStyleForApp})
