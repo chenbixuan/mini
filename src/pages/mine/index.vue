@@ -23,7 +23,7 @@
         </div>
         <div class="memberBox-item">
           <ul class="memberBox-ulBox">
-            <li class="memberBox-ulBox-li" :class="{'on':token}">
+            <li class="memberBox-ulBox-li" :class="{'on':token}" @click="exploit()">
               <img class="i-icon" src="/static/images/img28.png"/>
               <img class="ia-icon" src="/static/images/img28a.png"/>
               <p>生日礼遇</p>
@@ -33,12 +33,12 @@
               <img class="ia-icon" src="/static/images/img29a.png"/>
               <p>积分兑换</p>
             </li>
-            <li class="memberBox-ulBox-li">
+            <li class="memberBox-ulBox-li" @click="exploit()">
               <img class="i-icon" src="/static/images/img30.png"/>
               <img class="ia-icon" src="/static/images/img30a.png"/>
               <p>会员活动</p>
             </li>
-            <li class="memberBox-ulBox-li">
+            <li class="memberBox-ulBox-li" @click="exploit()">
               <img class="i-icon" src="/static/images/img31.png"/>
               <img class="ia-icon" src="/static/images/img31a.png"/>
               <p>专项服务</p>
@@ -53,11 +53,11 @@
       <ul class="mine-cont-cardUl">
         <li class="mine-cont-cardLi" @click="myOrder()"><img class="card-icon" src="/static/images/img34.png"/>我的预约</li>
         <li class="mine-cont-cardLi" @click="myCard()"><img class="card-icon" src="/static/images/img35.png"/>优惠卡券</li>
-        <li class="mine-cont-cardLi"><img class="card-icon" src="/static/images/img36.png"/>邀请好友<span class="courtesy"><img src="/static/images/img38.png"/></span></li>
+        <li class="mine-cont-cardLi" @click="invitation()"><img class="card-icon" src="/static/images/img36.png"/>邀请好友<span class="courtesy"><img src="/static/images/img38.png"/></span></li>
         <li class="mine-cont-cardLi" @click="contact()"><img class="card-icon" src="/static/images/img37.png"/>联系客服</li>
       </ul>
     </div>
-    <div class="mine-cont-item">
+    <!-- <div class="mine-cont-item">
       <h2 class="item-title">至尊服务<span>SERVICE</span></h2>
       <ul class="item-ulBox">
         <li class="item-list">
@@ -86,7 +86,7 @@
           </div>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -176,6 +176,18 @@ export default {
     contact: function () {
       mpvue.showToast({
         title: '不理你，哈哈!',
+        icon: 'none'
+      })
+    },
+    invitation: function () {
+      mpvue.showToast({
+        title: '邀请成功!',
+        icon: 'none'
+      })
+    },
+    exploit: function () {
+      mpvue.showToast({
+        title: '努力开发中，敬请期待!',
         icon: 'none'
       })
     }

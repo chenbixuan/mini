@@ -12,9 +12,9 @@
         </div>
       </div>
       <div class="subscribesucc-cont-buttomBox">
-        <p class="btn buttomBox-share">分享有礼</p>
+        <p class="btn buttomBox-share" @click="shareClick()">分享有礼</p>
         <p class="buttomBox-btn">
-          <span>查看导航</span>
+          <span @click="looknNavigation()">查看导航</span>
           <span @click="backHome()">回到首页</span>
         </p>
       </div>
@@ -35,6 +35,16 @@ export default {
       wx.switchTab({
         url: '/pages/index/main'
       })
+    },
+    shareClick: function () {
+      mpvue.showModal({
+        title: '提示',
+        content: '分享成功' })
+    },
+    looknNavigation: function () {
+      mpvue.showModal({
+        title: '提示',
+        content: '此功能在努力开发中，敬请期待！' })
     }
   }
 }

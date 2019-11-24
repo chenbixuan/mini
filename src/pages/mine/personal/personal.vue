@@ -11,7 +11,7 @@
           <li class="fromBox-list" @click="nameInput()">
             姓名<span>小轩<img src="/static/images/img27.png" /></span>
           </li>
-          <li class="fromBox-list">
+          <li class="fromBox-list" @click="sexClick()">
             性别<span>女<img src="/static/images/img27.png" /></span>
           </li>
           <li class="fromBox-list">
@@ -67,6 +67,12 @@ export default {
     },
     infoCilck: function () {
       this.infoFlag = false
+    },
+    sexClick: function () {
+      mpvue.showToast({
+        title: '性别已命中注定，无法修改，嘿嘿!',
+        icon: 'none'
+      })
     }
   }
 }

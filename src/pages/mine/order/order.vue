@@ -16,7 +16,7 @@
           <p class="list-address">
             <img class="list-address-icon" src="/static/images/img43.png"/>
             <span class="list-address-text">{{ item.shop.name }}（{{ item.shop.addr }}）<span class="sp1">{{ item.shop.addrJc }}</span></span>
-            <span class="list-address-navigation"><img src="/static/images/img39.png"/></span>
+            <span class="list-address-navigation" @click="looknNavigation()"><img src="/static/images/img39.png"/></span>
           </p>
         </li>
         <li class="noOrder-list" v-if="lists.length==0">
@@ -105,6 +105,11 @@ export default {
       this.lists.push(...lists)
       this.hasNext = hasNext
       this.page++
+    },
+    looknNavigation: function () {
+      mpvue.showModal({
+        title: '提示',
+        content: '此功能在努力开发中，敬请期待！' })
     }
   }
 }
