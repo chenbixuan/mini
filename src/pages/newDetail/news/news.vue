@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import EventBus from 'scripts/EventBus'
 export default {
   mounted: function () {
 

@@ -21,12 +21,31 @@
       </div>
     </div>
     
-    <p class="btn photography-cont-btn">下一步</p>
+    <p class="btn photography-cont-btn" @click="nextStep()">下一步</p>
   </div>
 </template>
 
 <script>
-// export default {};
+// import EventBus from 'scripts/EventBus'
+export default {
+  data () {
+    return {
+      dd: false
+    }
+  },
+  mounted: function () {
+
+  },
+  methods: {
+    nextStep: function () {
+      wx.navigateTo({
+        url: '../date/main'
+      })
+      this.$store.dispatch('setSwitchFlagState', false)
+    }
+
+  }
+}
 </script>
 
 <style>

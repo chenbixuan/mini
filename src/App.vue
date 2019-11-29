@@ -2,7 +2,6 @@
 <style lang="less">
 @import "~styles/public.less";
 @import "~styles/style.less";
-@import "~styles/animate.less";
 @import "~styles/fonts.less";
 </style>
 <script>

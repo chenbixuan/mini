@@ -47,23 +47,23 @@
     <!-- 弹框 -->
     <!-- <subscribe-alert-box v-if="false"></subscribe-alert-box> -->
     <!-- 预约成功 -->
-    <subscribe-succ v-if="false"></subscribe-succ>
+    <!-- <subscribe-succ v-if="false"></subscribe-succ> -->
     <!-- 我的预约 -->
-    <my-order v-if="false"></my-order>
+    <!-- <my-order v-if="false"></my-order> -->
     <!-- 门店地址 -->
-    <my-address v-if="false"></my-address>
+    <!-- <my-address v-if="false"></my-address> -->
   </div>
 </template>
 
 <script>
 // Use Vuex
 import store from './store'
-import photoGraphy from '@/components/service/photography'
-import selectionTime from '@/components/service/selectiontime'
-import subscribeAlertBox from '@/components/service/subscribealertbox'
-import subscribeSucc from '@/components/service/subscribesucc'
-import myOrder from '@/components/service/order'
-import myAddress from '@/components/service/address'
+// import photoGraphy from '@/components/service/photography'
+// import selectionTime from '@/components/service/selectiontime'
+// import subscribeAlertBox from '@/components/service/subscribealertbox'
+// import subscribeSucc from '@/components/service/subscribesucc'
+// import myOrder from '@/components/service/order'
+// import myAddress from '@/components/service/address'
 export default {
   data () {
     return {
@@ -80,12 +80,12 @@ export default {
     }
   },
   components: {
-    photoGraphy,
-    selectionTime,
-    subscribeAlertBox,
-    subscribeSucc,
-    myOrder,
-    myAddress
+    // photoGraphy,
+    // selectionTime,
+    // subscribeAlertBox,
+    // subscribeSucc,
+    // myOrder,
+    // myAddress
   },
   computed: {
     count () {
@@ -97,7 +97,7 @@ export default {
       // wx.navigateTo({url: '../../components/service/photography.vue'})
 
       wx.navigateTo({
-        url: '../service/graphy/main'
+        url: '../myMo/graphy/main'
       })
     },
     increment () {

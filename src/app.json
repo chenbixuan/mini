@@ -1,22 +1,41 @@
 {
   "pages": [
-    "pages/index/main",
-    "pages/mine/main",
-    "pages/service/main",
+    "pages/index/main",    
+    "pages/service/main", 
     "pages/works/main",
     "pages/address/main",
-    "pages/service/graphy/main",
-    "pages/service/date/main",
-    "pages/service/subscribesucc/main",
-    "pages/mine/order/main",
-    "pages/mine/coupon/main",
-    "pages/mine/integral/main",
-    "pages/mine/personal/main",
-    "pages/mine/name/main",
-    "pages/mine/phone/main",
-    "pages/index/news/main"
-
+    "pages/mine/main"
+    
   ],
+  "subPackages":[
+    {
+        "root":"pages/myMo/",
+        "pages":[
+          
+          "date/main",
+          "graphy/main",
+          "subscribesucc/main"
+        ]
+    },
+    {
+        "root":"pages/OPKG/",
+        "pages":[
+          "coupon/main",
+          "integral/main",
+          "name/main",
+          "order/main",
+          "personal/main",
+          "phone/main"
+        ]
+    },
+    {
+      "root":"pages/newDetail/",
+      "pages":[
+        "news/main"
+      ]
+  }
+    
+],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -67,7 +86,6 @@
   },
   "usingComponents": {
     "calendar": "plugin://calendar/calendar",
-    "i-action-sheet": "../static/ivew/action-sheet/index",
     "i-modal": "../static/ivew/modal/index"
   }
 }

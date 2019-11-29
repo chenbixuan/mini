@@ -56,12 +56,7 @@ export default {
       that.jsonText1 = []
       that.jsonText2 = []
       that.jsonText3 = []
-      // for (var i = 0; i < that.lists.length; i++) {
-      //   let optionLists = that.lists[i].files
-      //   for (var j = 0; j < optionLists.length; j++) {
-      //     that.jsonText.push(optionLists[j].url)
-      //   }
-      // }
+
       let option1 = that.lists[0].files
       let option2 = that.lists[1].files
       let option3 = that.lists[2].files

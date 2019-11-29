@@ -22,17 +22,14 @@
     </div>
 
     <div class="btn selectiontime-cont-btn" @click="handleOpen1()">预约</div>
-    <!-- <i-action-sheet :visible="visible1" :actions="actions1" show-cancel @click="handleCancel1" bind:click="handleClickItem1" > -->
     <subscribe-alert-box></subscribe-alert-box>
-    <!-- </i-action-sheet> -->
-    <i-modal :visible="visible2" @ok="handleClose2" @cancel="handleClose2">
+    <!-- <i-modal :visible="visible2" @ok="handleClose2" @cancel="handleClose2">
         <view>请预约正确的时间</view>
-    </i-modal>
+    </i-modal> -->
   </div>
 </template>
 
 <script>
-// import moment from 'moment'
 import { get } from '@/utils'
 import EventBus from 'scripts/EventBus'
 import subscribeAlertBox from '@/pages/service/subscribealertbox'
@@ -83,13 +80,9 @@ export default {
     timeIndex: undefined
   },
   mounted: function () {
-    console.log('我进来了')
     this.getShop()
     this.timeIndex = -1
     let today = new Date().getDate()
-    console.log(this.yearDate)
-    console.log(this.monthDate)
-    console.log(this.dayTime)
     this.dayStyle = []
     this.clickDayObj = null
     this.setReadOnlyStyle()
@@ -113,16 +106,6 @@ export default {
     },
     // 给点击的日期设置一个背景颜色
     dayClick: function (event) {
-      // console.log(event)
-      // var dataA = `${this.yearDate}-${this.monthDate}-${event.mp.detail.day}`
-      // var dataB = moment(new Date()).format('YYYY-MM-DD')
-      // console.log(dataA)
-      // console.log(dataB)
-      // console.log(dataB > dataA)
-      // if (dataB.diff(dataA) > 0) {
-      //   this.dayStyle.push({month: 'current', day: '', color: '', background: '', borderRadius: ''})
-      // }
-      console.log('d3211231231231233')
       let clickDay = this.selectDay = event.mp.detail.day
       let clickMonth = this.selectMonth = event.mp.detail.month
       let clickYear = this.selectYear = event.mp.detail.year
@@ -134,11 +117,12 @@ export default {
       let compareDate = new Date()
       compareDate.setHours(0)
       if (tmpDate.getTime() < compareDate.getTime() - 2000) {
-        this.visible2 = true
+        mpvue.showModal({
+          title: '提示',
+          content: '请预约正确的时间!' })
         return
       }
       this.dayTime = event.mp.detail.day
-      console.log(clickDay)
       if (!!this.clickDayObj && this.dayStyle.length > 0) {
         for (var index in this.dayStyle) {
           if (this.clickDayObj === this.dayStyle[index]) {
@@ -146,13 +130,11 @@ export default {
           }
         }
       }
-      console.log(this.dayStyle)
       this.clickDayObj = {month: 'current', day: clickDay, color: '#353535', background: '#E7C394', borderRadius: '50%'}
       this.dayStyle.push(this.clickDayObj)
       let datStyleForApp = this.dayStyle
       this.$mp.page.setData({datStyleForApp})
       this.dayTime = this.selectDay
-      console.log(event.mp.detail)
       this.monthDate = event.mp.detail.month
       this.yearDate = event.mp.detail.year
       this.$forceUpdate()
@@ -164,39 +146,10 @@ export default {
         period: this.period
       })
 
-      // console.log(event)
-      // let changeDay = event.mp.detail.color
-      // let changeBg = event.mp.detail.background
-      // console.log(clickDay)
-      // console.log(changeDay)
-      // console.log(changeBg)
-      // changeDay = '#fff'
-      // changeBg = '#9E312E'
-      // let changeDay = `dayStyle[1].day`
-      // let changeBg = `dayStyle[1].background`
-      // this.setData({
-      //   [changeDay]: clickDay,
-      //   [changeBg]: '#84e7d0'
-      // })
-      // subscribeAlertBox.methods.showshadow()
-      // this.succState = true
       this.$store.dispatch('setSwitchFlagState', true)
-      // EventBus.$emit('GBKBalance', this.succState)
-      // this.dd = true
     },
     dayChange (e) {
-      console.log('eweggrg')
-      console.log(e)
-
       this.setReadOnlyStyle(e)
-      // this.commonDate(e)
-      console.log(this.dayStyle)
-      // console.log(this.monthDate)
-      // if (this.dayStyle.length !== 0) {
-      //   this.dayStyle[0].background = ''
-      //   this.dayStyle[0].color = ''
-      // }
-      //
     },
     setReadOnlyStyle (e) {
       this.dayStyle = []
@@ -212,9 +165,7 @@ export default {
           this.dayStyle.push({ month: 'current', day: dayTime, color: '#B7B6B6', background: '' })
         }
       } else {
-        console.log(e)
         e = e.mp.detail
-        console.log(e.currentYear, e.currentMonth)
         let CompareMonth = new Date(e.currentYear + '-' + e.currentMonth + '-1')
         let thisMonth = new Date(this.year + '-' + this.month + '-1')
         if (CompareMonth.getTime() < thisMonth.getTime()) {
@@ -230,9 +181,8 @@ export default {
             tmpDate.setDate(1)
             tmpDate.setHours(0)
           }
-          console.log(new Date(tmpDate.getTime() - 60 * 60 * 1000))
           let dayLimit = new Date(tmpDate.getTime() - 60 * 60 * 1000).getDate()
-          console.log(e.currentMonth)
+
           for (let dayTime = 1; dayTime <= dayLimit; dayTime++) {
             this.dayStyle.push({ month: 'current', day: dayTime, color: '#B7B6B6', background: '' })
           }
@@ -251,8 +201,6 @@ export default {
       this.setReadOnlyStyle(e)
     },
     commonDate (e) {
-      console.log(this.selectDay)
-
       this.dayStyle.shift()
       this.dayStyle.push({month: 'current', day: '', color: '', background: '', borderRadius: ''})
       let datStyleForApp = this.dayStyle

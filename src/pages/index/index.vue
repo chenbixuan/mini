@@ -87,7 +87,7 @@ export default {
     },
     commonClick: function () {
       wx.navigateTo({
-        url: '../index/news/main'
+        url: '../newDetail/news/main'
       })
     }
   }

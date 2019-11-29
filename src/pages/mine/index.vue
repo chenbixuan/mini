@@ -111,22 +111,22 @@ export default {
   methods: {
     myOrder: function () {
       mpvue.navigateTo({
-        url: '../mine/order/main'
+        url: '../OPKG/order/main'
       })
     },
     myCard: function () {
       mpvue.navigateTo({
-        url: '../mine/coupon/main'
+        url: '../OPKG/coupon/main'
       })
     },
     integralChange: function () {
       mpvue.navigateTo({
-        url: '../mine/integral/main'
+        url: '../OPKG/integral/main'
       })
     },
     editClick: function () {
       mpvue.navigateTo({
-        url: '../mine/personal/main'
+        url: '../OPKG/personal/main'
       })
     },
     getOpenId: function () {
